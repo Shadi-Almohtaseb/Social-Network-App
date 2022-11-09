@@ -14,7 +14,7 @@ import {
   Tooltip,
   Typography,
 } from "@mui/material";
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Mail from "@mui/icons-material/Mail";
 import SearchIcon from "@mui/icons-material/Search";
@@ -22,6 +22,8 @@ import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
 import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
+import { UserAuth } from "../context/AuthContext";
+import { useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -75,7 +77,24 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 const Navbar = ({ openSide, setOpenSide }) => {
+  const { HandelSignOut, userIn } = UserAuth();
+  const navigate = useNavigate();
+
   const [open, setOpen] = useState(false);
+
+  const handelSignOut = async () => {
+    try {
+      await HandelSignOut();
+      navigate("/signin");
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    if (!userIn) navigate("/signin");
+  }, [userIn]);
+
   return (
     <AppBar position="sticky">
       <StyledToolbar>
@@ -125,7 +144,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               ml={1}
               sx={{ display: { xs: "none", sm: "flex" } }}
             >
-              Tiffany
+              {userIn?.displayName}
             </Typography>
           </Box>
           <Menu
@@ -181,7 +200,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               </ListItemIcon>
               Settings
             </MenuItem>
-            <MenuItem>
+            <MenuItem onClick={handelSignOut}>
               <ListItemIcon>
                 <ExitToAppRoundedIcon fontSize="small" />
               </ListItemIcon>
