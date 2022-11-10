@@ -14,7 +14,8 @@ import Container from "@mui/material/Container";
 import { createTheme, ThemeProvider } from "@mui/material/styles";
 import googleImage from "../assets/images/Google__G__Logo.svg.webp";
 import { UserAuth } from "../context/AuthContext";
-import { Navigate, useNavigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+import SignInImg from "../assets/images/SignIn.png";
 
 function Copyright(props) {
   return (
@@ -52,19 +53,31 @@ const SignIn = () => {
         <CssBaseline />
         <Box
           sx={{
-            marginTop: 18,
+            marginTop: 8,
             display: "flex",
             flexDirection: "column",
             alignItems: "center",
           }}
         >
-          <Avatar sx={{ m: 1, bgcolor: "secondary.main" }}>
-            <LockOutlinedIcon />
-          </Avatar>
-          <Typography component="h1" variant="h5">
-            Sign in
-          </Typography>
-          <Box component="form" noValidate sx={{ mt: 1 }}>
+          <Box
+            sx={{
+              display: "flex",
+              alignItems: "center",
+              justifyContent: "center",
+              gap: "12px",
+            }}
+          >
+            <Avatar
+              sx={{ m: 1, bgcolor: "#1976d2", width: "50px", height: "50px" }}
+            >
+              <LockOutlinedIcon />
+            </Avatar>
+            <Typography component="h1" variant="h4">
+              Sign in
+            </Typography>
+          </Box>
+          <Box component="form" noValidate>
+            <img src={SignInImg} width={450} alt="SignInImg" />
             {/* <TextField
               margin="normal"
               required
@@ -93,7 +106,6 @@ const SignIn = () => {
               fullWidth
               variant="contained"
               sx={{
-                mt: 3,
                 mb: 2,
                 display: "flex",
                 justifyContent: "space-between",
@@ -113,7 +125,9 @@ const SignIn = () => {
               >
                 <img src={googleImage} width={30} alt="google" />
               </Box>
-              Sign In With Google
+              <Typography sx={{ fontSize: "20px" }}>
+                Sign In With Google
+              </Typography>
             </Button>
             {/* <Grid container>
               <Grid item xs>

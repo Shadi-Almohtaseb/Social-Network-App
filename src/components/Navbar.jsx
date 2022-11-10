@@ -124,29 +124,50 @@ const Navbar = ({ openSide, setOpenSide }) => {
           <Badge badgeContent={2} color="error">
             <NotificationsRoundedIcon color="inherit" />
           </Badge>
-          <Box
-            sx={{
-              display: "flex",
-              alignItems: "center",
-              textAlign: "center",
-              cursor: "pointer",
-            }}
-            onClick={(e) => setOpen(true)}
-          >
-            <Tooltip title="Account settings">
-              <Avatar
-                alt="Girl"
-                src="https://images.hdqwalls.com/download/julie-kennedy-zl-3840x2400.jpg"
-              />
-            </Tooltip>
-            <Typography
-              variant="body1"
-              ml={1}
-              sx={{ display: { xs: "none", sm: "flex" } }}
+          <Tooltip title="Account settings">
+            <Box
+              sx={{
+                display: "flex",
+                alignItems: "center",
+                textAlign: "center",
+                cursor: "pointer",
+                px: "12px",
+                py: "4px",
+                bgcolor: "#ffe5",
+                borderRadius: "12px",
+                "&:hover": {
+                  backgroundColor: "#ffe9",
+                  color: "#fff",
+                },
+              }}
+              onClick={(e) => setOpen(true)}
             >
-              {userIn?.displayName}
-            </Typography>
-          </Box>
+              <Avatar alt="Girl" src={userIn?.photoURL} />
+              <Box
+                sx={{
+                  display: "flex",
+                  justifyContent: "center",
+                  alignItems: "center",
+                  flexDirection: "column",
+                }}
+              >
+                <Typography
+                  variant="body1"
+                  ml={1}
+                  sx={{ display: { xs: "none", sm: "flex" } }}
+                >
+                  {userIn?.displayName}
+                </Typography>
+                <Typography
+                  variant="subtitle2"
+                  ml={1}
+                  sx={{ display: { xs: "none", sm: "flex", fontSize: "12px" } }}
+                >
+                  {userIn?.email}
+                </Typography>
+              </Box>
+            </Box>
+          </Tooltip>
           <Menu
             id="account-menu"
             open={open}
