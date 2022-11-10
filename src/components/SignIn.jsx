@@ -72,11 +72,17 @@ const SignIn = () => {
             >
               <LockOutlinedIcon />
             </Avatar>
-            <Typography component="h1" variant="h4">
-              Sign in
-            </Typography>
+            <Typography className="text-4xl">Sign in</Typography>
           </Box>
-          <Box component="form" noValidate>
+          <Box
+            component="form"
+            sx={{
+              display: "flex",
+              justifyContent: "center",
+              alignItems: "center",
+              flexDirection: "column",
+            }}
+          >
             <img src={SignInImg} width={450} alt="SignInImg" />
             {/* <TextField
               margin="normal"
@@ -109,7 +115,7 @@ const SignIn = () => {
                 mb: 2,
                 display: "flex",
                 justifyContent: "space-between",
-                px: "80px",
+                px: "60px",
                 gap: "15px",
               }}
               onClick={handelSignIn}
