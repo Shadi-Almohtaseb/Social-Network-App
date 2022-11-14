@@ -34,10 +34,10 @@ const Search = styled("div")(({ theme }) => ({
   position: "relative",
   width: "100%",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.2),
+  backgroundColor: alpha(theme.palette.common.white, 1),
   marginRight: theme.spacing(1),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.3),
+    backgroundColor: alpha(theme.palette.common.white, 0.9),
   },
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
@@ -57,6 +57,7 @@ const SearchIconWrapper = styled("div")(({ theme }) => ({
   display: "flex",
   alignItems: "center",
   justifyContent: "center",
+  color: "#999"
 }));
 
 const Icons = styled(Box)(({ theme }) => ({
@@ -67,7 +68,7 @@ const Icons = styled(Box)(({ theme }) => ({
 }));
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
-  color: "inherit",
+  color: "#777",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
@@ -102,7 +103,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
           variant="h6"
           sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}
         >
-          React.js & MUI
+          MeetMax
         </Typography>
         <MenuIcon
           sx={{ display: { xs: "flex", md: "none" }, cursor: "pointer" }}
@@ -178,7 +179,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               sx: {
                 overflow: "visible",
                 filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: -66,
+                mt: -44,
                 "& .MuiAvatar-root": {
                   width: 32,
                   height: 32,
