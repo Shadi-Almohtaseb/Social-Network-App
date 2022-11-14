@@ -8,7 +8,7 @@ import { auth } from '../../firebase.config';
 import { db } from '../../firebase.config';
 import { storage } from '../../firebase.config';
 import { onValue, ref, set,} from "firebase/database";
-import { uploadBytes } from 'firebase/storage';
+import { uploadBytes, ref as sRef } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { UserAuth } from '../../context/AuthContext';
 import {
@@ -58,7 +58,8 @@ const PopupAddPosts = (props) => {
   }
 
   const addPosts = () => {
-    const mountainImagesRef = ref(storage, `posts/${imageAsFile.name + v4()}`);
+    const mountainImagesRef = sRef(storage, `posts/${imageAsFile.name + v4()}`);
+    const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + mountainImagesRef.fullPath;
 
     uploadBytes(mountainImagesRef, imageAsFile).then(() => 
     {
@@ -68,10 +69,10 @@ const PopupAddPosts = (props) => {
     set(ref(db, 'posts/' + props.postData.length), {
       name: userIn?.displayName,
       content: content,
-      image: mountainImagesRef.fullPath
+      image: url 
     });
   }
-  
+
   return (
     <div>
       <Popup Popup trigger={<button button > <AddPosts /></button>} position="center" modal nested >
