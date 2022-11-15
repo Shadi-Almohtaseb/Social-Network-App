@@ -4,10 +4,9 @@ import 'reactjs-popup/dist/index.css';
 import AddPosts from './AddPosts';
 import { useNavigate } from 'react-router-dom';
 import Typography from '@mui/material/Typography';
-import { auth } from '../../firebase.config';
 import { db } from '../../firebase.config';
 import { storage } from '../../firebase.config';
-import { onValue, ref, set,} from "firebase/database";
+import { ref, set, } from "firebase/database";
 import { uploadBytes, ref as sRef } from 'firebase/storage';
 import { v4 } from 'uuid';
 import { UserAuth } from '../../context/AuthContext';
@@ -48,7 +47,7 @@ const PopupAddPosts = (props) => {
     if (!userIn) navigate("/signin");
   }, [userIn]);
 
-  
+
 
   const handleChange = e => {
     if (e.target.files[0]) {
@@ -59,17 +58,25 @@ const PopupAddPosts = (props) => {
 
   const addPosts = () => {
     const mountainImagesRef = sRef(storage, `posts/${imageAsFile.name + v4()}`);
-    const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + mountainImagesRef.fullPath;
+    const current = new Date();
+    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
+    const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + '/o/posts%2F' + mountainImagesRef.name + '?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd'
 
-    uploadBytes(mountainImagesRef, imageAsFile).then(() => 
-    {
+    uploadBytes(mountainImagesRef, imageAsFile).then(() => {
       console.log('image upload')
-    })
+      console.log(url)
+    });
+
+    // getDownloadURL(mountainImagesRef)
+    //   .then((url) => {
+    //     console.log(url)
+    //   })
 
     set(ref(db, 'posts/' + props.postData.length), {
-      name: userIn?.displayName,
+      email: userIn?.email,
+      date: date,
       content: content,
-      image: url 
+      image: url
     });
   }
 
@@ -125,7 +132,13 @@ const PopupAddPosts = (props) => {
                     fullWidth
                     size="small"
                     placeholder="What's happening"
-                    sx={{ border: 'none', backgroundColor: "#f1f1f1" }} />}
+                    sx={{
+                      backgroundColor: "#f1f1f1", borderRadius: '20px',
+                      "& .MuiOutlinedInput-root": {
+                        "& > fieldset": { border: "none", },
+                      },
+                    }}
+                  />}
                 />
               </div>
               <CardActions disableSpacing>

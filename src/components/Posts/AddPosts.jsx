@@ -34,7 +34,14 @@ const AddPosts = (props) => {
                             fullWidth
                             size="small"
                             placeholder="What's happening"
-                            sx={{ border: 'none', backgroundColor: "#f1f1f1" }} />}
+                            sx={{
+                                backgroundColor: "#f1f1f1", borderRadius: '20px',
+                                "& .MuiInputLabel-root": { color: 'green' },//styles the label
+                                "& .MuiOutlinedInput-root": {
+                                    "& > fieldset": { border: "none", },
+                                },
+                            }}
+                        />}
                     />
                 </div>
                 <CardActions disableSpacing>
@@ -68,10 +75,10 @@ const AddPosts = (props) => {
                             }
                         />
                     </IconButton>
-                    <Button variant="contained" component="label" sx={{padding: " 6px 32px"}}>
-                    Post
-                    {/* <input hidden accept="image/*" multiple type="file" /> */}
-                </Button>
+                    <Button variant="contained" component="label" sx={{ padding: " 6px 32px" }}>
+                        Post
+                        {/* <input hidden accept="image/*" multiple type="file" /> */}
+                    </Button>
                 </CardActions>
             </Card>
         </div>
