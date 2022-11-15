@@ -64,7 +64,6 @@ const PopupAddPosts = (props) => {
 
     uploadBytes(mountainImagesRef, imageAsFile).then(() => {
       console.log('image upload')
-      console.log(url)
     });
 
     // getDownloadURL(mountainImagesRef)
@@ -120,7 +119,7 @@ const PopupAddPosts = (props) => {
                   avatar={
                     <Avatar
                       src="https://source.unsplash.com/random"
-                      sx={{ bgColor: "red" }}
+                      sx={{ width: 50, height: 50 }}
                       aria-label="recipe"
                     />
                   }
@@ -131,9 +130,9 @@ const PopupAddPosts = (props) => {
                     onChange={(e) => setContent(e.target.value)}
                     fullWidth
                     size="small"
-                    placeholder="What's happening"
+                    placeholder="What's happening?"
                     sx={{
-                      backgroundColor: "#f1f1f1", borderRadius: '20px',
+                      backgroundColor: "#f1f1f1", borderRadius: '10px',
                       "& .MuiOutlinedInput-root": {
                         "& > fieldset": { border: "none", },
                       },
@@ -154,7 +153,7 @@ const PopupAddPosts = (props) => {
                   />
                 </IconButton>
                 <IconButton color="primary" aria-label="upload picture" component="label" sx={{ color: '#888' }}>
-                  <input hidden accept="image/*" name='imgPost' type="file" onChange={handleChange} /*value={images} onChange={(e) => setImages(e.target.value)}*/ />
+                  <input hidden accept="image/*" name='imgPost' type="file" onChange={handleChange}/>
                   <ImageOutlinedIcon />
                   <Typography variant="body2" gutterBottom>
                     Photo/Video
@@ -179,7 +178,7 @@ const PopupAddPosts = (props) => {
                     }
                   />
                 </IconButton>
-                <Button variant="contained" component="label" sx={{ padding: " 6px 32px" }} onClick={addPosts}>
+                <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1}} onClick={addPosts}>
                   Post
                   {/* <input hidden accept="image/*" multiple type="file" /> */}
                 </Button>

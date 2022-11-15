@@ -25,7 +25,7 @@ const AddPosts = (props) => {
                         avatar={
                             <Avatar
                                 src="https://source.unsplash.com/random"
-                                sx={{ bgColor: "red" }}
+                                sx={{ width: 50, height: 50 }}
                                 aria-label="recipe"
                             />
                         }
@@ -33,9 +33,9 @@ const AddPosts = (props) => {
                             id="filled-hidden-label-small"
                             fullWidth
                             size="small"
-                            placeholder="What's happening"
+                            placeholder="What's happening?"
                             sx={{
-                                backgroundColor: "#f1f1f1", borderRadius: '20px',
+                                backgroundColor: "#f1f1f1", borderRadius: '10px',
                                 "& .MuiInputLabel-root": { color: 'green' },//styles the label
                                 "& .MuiOutlinedInput-root": {
                                     "& > fieldset": { border: "none", },
@@ -75,7 +75,7 @@ const AddPosts = (props) => {
                             }
                         />
                     </IconButton>
-                    <Button variant="contained" component="label" sx={{ padding: " 6px 32px" }}>
+                    <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1}}>
                         Post
                         {/* <input hidden accept="image/*" multiple type="file" /> */}
                     </Button>
