@@ -2,6 +2,7 @@ import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
 import Post from './Posts/Post';
 import PopupAddPosts from "./Posts/PopupAddPosts";
+import { auth } from '../firebase.config'; 
 import { onValue, ref } from 'firebase/database';
 import { db } from '../firebase.config';
 
@@ -16,6 +17,7 @@ const Feed = () => {
       if (snapshot.exists()) {
         Object.values(data).map((item) => {
           setData((data) => [...data, item]);
+          console.log(data)
         });
       }
     });

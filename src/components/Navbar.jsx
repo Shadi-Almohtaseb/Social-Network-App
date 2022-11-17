@@ -37,7 +37,7 @@ const Search = styled("div")(({ theme }) => ({
   backgroundColor: alpha(theme.palette.common.white, 1),
   marginRight: theme.spacing(1),
   "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.9),
+    backgroundColor: alpha(theme.palette.common.white, 1),
   },
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(3),
