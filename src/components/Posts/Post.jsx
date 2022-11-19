@@ -15,7 +15,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 
-const Post = () => {
+const Post = ({ item }) => {
   return (
     <div>
       <Card sx={{ marginBottom: { xs: 5 } }}>
@@ -37,19 +37,17 @@ const Post = () => {
           title="Shadi Almohtaseb"
           subheader="September 14, 2022"
         />
+        <CardContent>
+          <Typography variant="body2" color="text.secondary">
+            {item.content}
+          </Typography>
+        </CardContent>
         <CardMedia
           component="img"
           height="500"
-          image="https://source.unsplash.com/random"
+          image={item.image}
           alt="Paella dish"
         />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-        </CardContent>
         <CardActions disableSpacing>
           <IconButton aria-label="add to favorites">
             <Checkbox

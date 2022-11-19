@@ -70,18 +70,13 @@ const PopupAddPosts = (props) => {
       console.log('image upload')
     });
 
-    // getDownloadURL(mountainImagesRef)
-    //   .then((url) => {
-    //     console.log(url)
-    //   })
-
     set(ref(db, 'posts/' + props.postData.length), {
       email: userIn?.email,
       date: date,
       content: content,
       image: url,
       countLike: 0,
-      comment: [{}],
+      countComment: 0,
     });
   }
 

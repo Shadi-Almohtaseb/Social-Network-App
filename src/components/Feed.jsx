@@ -12,13 +12,14 @@ const Feed = () => {
   useEffect(() => {
     const query = ref(db, "posts");
     return onValue(query, (snapshot) => {
-      const data = snapshot.val();
+      const postData = snapshot.val();
 
       if (snapshot.exists()) {
-        Object.values(data).map((item) => {
-          setData((data) => [...data, item]);
-          console.log(data)
-        });
+        console.log(snapshot.val());
+        setData(snapshot.val());
+        // Object.values(postData).map((item) => {
+        //   setData((data) => [...data, item]);
+        // });
       }
     });
   }, []);
@@ -26,12 +27,17 @@ const Feed = () => {
   return (
     <Box flex={4} sx={{backgroundColor: "#f1f1f1"}} p={2}>
       <PopupAddPosts postData={data}/>
+      {
+        data.map((item)=>
+        {
+          return <Post item={item}/>
+        })
+      }
+      {/* <Post/>
       <Post/>
       <Post/>
       <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
+      <Post/> */}
     </Box>
   )
 }
