@@ -24,7 +24,7 @@ import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplica
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
 import NotificationsRoundedIcon from "@mui/icons-material/NotificationsRounded";
 import { UserAuth } from "../context/AuthContext";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const StyledToolbar = styled(Toolbar)({
   display: "flex",
@@ -64,7 +64,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
     }
   };
 
-  const [inputUser, setInputUser] = useState('')
+  const [inputUser, setInputUser] = useState("");
 
   useEffect(() => {
     if (!userIn) navigate("/signin");
@@ -72,9 +72,9 @@ const Navbar = ({ openSide, setOpenSide }) => {
 
   const HandelSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.inputUser.value
+    const name = e.target.inputUser.value;
     console.log(name);
-  }
+  };
 
   return (
     <AppBar position="sticky">
@@ -92,28 +92,28 @@ const Navbar = ({ openSide, setOpenSide }) => {
           }}
         />
 
-        <form onSubmit={HandelSubmit} className="flex">
-        <Autocomplete
-          freeSolo
-          options={usersList.map(u => ({ label: u.name, user: u }))}
-          sx={{ width: 300 }}
-          className="bg-slate-50 rounded-lg"
-          renderInput={(params) => <TextField
-              {...params}
-              placeholder="search for users..."
-              size="small"
-              name="inputUser"
-              />}
+        <form onSubmit={HandelSubmit} className="hidden md1:flex gap-5">
+          <Autocomplete
+            freeSolo
+            options={usersList.map((u) => ({ label: u.name, user: u }))}
+            sx={{ width: 300 }}
+            className="bg-slate-50 rounded-lg"
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                placeholder="search for users..."
+                size="small"
+                name="inputUser"
               />
-              <button type="submit" className="px-2 py-1 rounded-lg bg-blue-200 text-black">Check</button>
-              </form>
-
-        {/* <Search>
-          <SearchIconWrapper>
-            <SearchIcon />
-          </SearchIconWrapper>
-          <StyledInputBase placeholder="Search..." />
-        </Search> */}
+            )}
+          />
+          <button
+            type="submit"
+            className="px-2 py-1 rounded-lg bg-blue-300 text-black hover:bg-blue-200"
+          >
+            Check
+          </button>
+        </form>
         <Icons>
           <Badge badgeContent={4} color="error">
             <Mail color="inherit" />
@@ -151,14 +151,14 @@ const Navbar = ({ openSide, setOpenSide }) => {
                 <Typography
                   variant="body1"
                   ml={1}
-                  sx={{ display: { xs: "none", sm: "flex" } }}
+                  sx={{ display: { xs: "none", md: "flex" } }}
                 >
                   {userIn?.displayName}
                 </Typography>
                 <Typography
                   variant="subtitle2"
                   ml={1}
-                  sx={{ display: { xs: "none", sm: "flex", fontSize: "12px" } }}
+                  sx={{ display: { xs: "none", md: "flex", fontSize: "12px" } }}
                 >
                   {userIn?.email}
                 </Typography>
@@ -175,7 +175,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               sx: {
                 overflow: "visible",
                 filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: -44,
+                mt: -56,
                 "& .MuiAvatar-root": {
                   width: 32,
                   height: 32,
@@ -199,11 +199,14 @@ const Navbar = ({ openSide, setOpenSide }) => {
             transformOrigin={{ horizontal: "right", vertical: "top" }}
             anchorOrigin={{ horizontal: "right", vertical: "bottom" }}
           >
+            <Link to="/profile">
+              <MenuItem>
+                <Avatar />
+                <span> Profile</span>
+              </MenuItem>
+            </Link>
             <MenuItem>
-              <Avatar /> Profile
-            </MenuItem>
-            <MenuItem>
-              <Avatar /> My account
+              <Avatar /> Account Setting
             </MenuItem>
             <Divider />
             <MenuItem>
