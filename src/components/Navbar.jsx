@@ -13,11 +13,12 @@ import {
   Toolbar,
   Tooltip,
   Typography,
+  Autocomplete,
+  TextField,
 } from "@mui/material";
 import React, { useEffect, useState } from "react";
 import MenuIcon from "@mui/icons-material/Menu";
 import Mail from "@mui/icons-material/Mail";
-import SearchIcon from "@mui/icons-material/Search";
 import ExitToAppRoundedIcon from "@mui/icons-material/ExitToAppRounded";
 import SettingsApplicationsRoundedIcon from "@mui/icons-material/SettingsApplicationsRounded";
 import PersonAddAltRoundedIcon from "@mui/icons-material/PersonAddAltRounded";
@@ -30,35 +31,6 @@ const StyledToolbar = styled(Toolbar)({
   justifyContent: "space-between",
 });
 
-const Search = styled("div")(({ theme }) => ({
-  position: "relative",
-  width: "100%",
-  borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.2),
-  marginRight: theme.spacing(1),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.3),
-  },
-  [theme.breakpoints.up("sm")]: {
-    marginLeft: theme.spacing(3),
-    width: "auto",
-  },
-  [theme.breakpoints.up("md")]: {
-    width: "45%",
-  },
-  marginLeft: "15px",
-}));
-
-const SearchIconWrapper = styled("div")(({ theme }) => ({
-  padding: theme.spacing(0, 2),
-  height: "100%",
-  position: "absolute",
-  pointerEvents: "none",
-  display: "flex",
-  alignItems: "center",
-  justifyContent: "center",
-}));
-
 const Icons = styled(Box)(({ theme }) => ({
   display: "flex",
   gap: "20px",
@@ -67,7 +39,7 @@ const Icons = styled(Box)(({ theme }) => ({
 }));
 const StyledInputBase = styled(InputBase)(({ theme }) => ({
   width: "100%",
-  color: "inherit",
+  color: "#777",
   "& .MuiInputBase-input": {
     padding: theme.spacing(1, 1, 1, 0),
     paddingLeft: `calc(1em + ${theme.spacing(4)})`,
@@ -78,8 +50,9 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = ({ openSide, setOpenSide }) => {
   const { HandelSignOut, userIn } = UserAuth();
+  const [users, setUsers] = useState();
   const navigate = useNavigate();
-
+  const { usersList } = UserAuth();
   const [open, setOpen] = useState(false);
 
   const handelSignOut = async () => {
@@ -91,9 +64,17 @@ const Navbar = ({ openSide, setOpenSide }) => {
     }
   };
 
+  const [inputUser, setInputUser] = useState('')
+
   useEffect(() => {
     if (!userIn) navigate("/signin");
   }, [userIn]);
+
+  const HandelSubmit = (e) => {
+    e.preventDefault();
+    const name = e.target.inputUser.value
+    console.log(name);
+  }
 
   return (
     <AppBar position="sticky">
@@ -102,7 +83,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
           variant="h6"
           sx={{ display: { xs: "none", md: "block" }, cursor: "pointer" }}
         >
-          React.js & MUI
+          MeetMax
         </Typography>
         <MenuIcon
           sx={{ display: { xs: "flex", md: "none" }, cursor: "pointer" }}
@@ -111,12 +92,28 @@ const Navbar = ({ openSide, setOpenSide }) => {
           }}
         />
 
-        <Search>
+        <form onSubmit={HandelSubmit} className="flex">
+        <Autocomplete
+          freeSolo
+          options={usersList.map(u => ({ label: u.name, user: u }))}
+          sx={{ width: 300 }}
+          className="bg-slate-50 rounded-lg"
+          renderInput={(params) => <TextField
+              {...params}
+              placeholder="search for users..."
+              size="small"
+              name="inputUser"
+              />}
+              />
+              <button type="submit" className="px-2 py-1 rounded-lg bg-blue-200 text-black">Check</button>
+              </form>
+
+        {/* <Search>
           <SearchIconWrapper>
             <SearchIcon />
           </SearchIconWrapper>
           <StyledInputBase placeholder="Search..." />
-        </Search>
+        </Search> */}
         <Icons>
           <Badge badgeContent={4} color="error">
             <Mail color="inherit" />
@@ -178,7 +175,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               sx: {
                 overflow: "visible",
                 filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: -66,
+                mt: -44,
                 "& .MuiAvatar-root": {
                   width: 32,
                   height: 32,
