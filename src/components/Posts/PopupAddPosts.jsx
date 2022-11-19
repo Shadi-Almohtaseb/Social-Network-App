@@ -60,12 +60,11 @@ const PopupAddPosts = (props) => {
     const mountainImagesRef = sRef(storage, `posts/${imageAsFile.name + v4()}`);
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-    const url = '';
-    console.log(imageAsFile)
-    if(imageAsFile === null)
-    {
-      url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + '/o/posts%2F' + mountainImagesRef.name + '?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd'
-    }
+    // const url = '';
+    // console.log(imageAsFile)
+    // if (imageAsFile === null) {
+    // }
+    const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + '/o/posts%2F' + mountainImagesRef.name + '?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd'
 
     uploadBytes(mountainImagesRef, imageAsFile).then(() => {
       console.log('image upload')
@@ -93,12 +92,12 @@ const PopupAddPosts = (props) => {
           <div className="modal">
             <Card>
               <div>
-                <CardActions sx={{ width: '100%', maxWidth: 500, display: "flex", justifyContent: "space-between", alignContent: "center" }}>
+                <CardActions sx={{ display: "flex", justifyContent: "space-between", alignContent: "center", padding: '0 7px' }}>
                   <Typography variant="h6" gutterBottom>
                     Create post
                   </Typography>
-                  <Box className='flex' sx={{ display: "flex", alignContent: "center" }}>
-                    <Typography variant="subtitle1" gutterBottom>
+                  <Box className='flex' sx={{ display: "flex", alignItems: "center" }}>
+                    <Typography variant="subtitle1">
                       visible for
                     </Typography>
                     <List>
@@ -115,14 +114,15 @@ const PopupAddPosts = (props) => {
                     </List>
                     <IconButton aria-label="HighlightOffIcon" onClick={() => { close() }}>
                       <FormControlLabel
-                        control={
-                          <HighlightOffIcon />
-                        }
+                      control={
+                        <HighlightOffIcon sx={{ fontSize: '27px',}} />
+                      }
                       />
                     </IconButton>
                   </Box>
                 </CardActions>
                 <CardHeader
+                  sx={{ display: 'flex', alignItems: 'flex-start' }}
                   avatar={
                     <Avatar
                       src="https://source.unsplash.com/random"
@@ -149,7 +149,8 @@ const PopupAddPosts = (props) => {
                   />}
                 />
               </div>
-              <CardActions disableSpacing>
+              <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between", padding: '0 15px 0 7px'}}>
+                <Box>
                 <IconButton aria-label="VideocamOutlinedIcon">
                   <FormControlLabel
                     label="Live Video"
@@ -187,6 +188,7 @@ const PopupAddPosts = (props) => {
                     }
                   />
                 </IconButton>
+                  </Box>
                 <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1 }} onClick={addPosts}>
                   Post
                   {/* <input hidden accept="image/*" multiple type="file" /> */}

@@ -19,7 +19,7 @@ import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSati
 const AddPosts = (props) => {
     return (
         <div>
-            <Card sx={{ marginBottom: { xs: 5 } }}>
+            <Card sx={{ marginBottom: { xs: 5 }}}>
                 <div>
                     <CardHeader
                         avatar={
