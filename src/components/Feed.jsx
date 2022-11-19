@@ -33,11 +33,6 @@ const Feed = () => {
           return <Post item={item}/>
         })
       }
-      {/* <Post/>
-      <Post/>
-      <Post/>
-      <Post/>
-      <Post/> */}
     </Box>
   )
 }

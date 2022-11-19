@@ -6,6 +6,7 @@ import {
   CardContent,
   CardHeader,
   CardMedia,
+  FormControlLabel,
   Checkbox,
   IconButton,
   Typography,
@@ -49,10 +50,15 @@ const Post = ({ item }) => {
           alt="Paella dish"
         />
         <CardActions disableSpacing>
-          <IconButton aria-label="add to favorites">
-            <Checkbox
-              icon={<FavoriteBorderIcon />}
-              checkedIcon={<FavoriteIcon sx={{ color: "red" }} />}
+          <IconButton aria-label="VideocamOutlinedIcon">
+            <FormControlLabel
+              label="Like"
+              control={
+                <Checkbox
+                  icon={<FavoriteBorderIcon />}
+                  checkedIcon={<FavoriteIcon sx={{ color: "#188cff" }} />}
+                />
+              }
             />
           </IconButton>
           <IconButton aria-label="share">

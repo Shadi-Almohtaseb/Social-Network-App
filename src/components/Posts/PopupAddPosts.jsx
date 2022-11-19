@@ -109,9 +109,9 @@ const PopupAddPosts = (props) => {
                     </List>
                     <IconButton aria-label="HighlightOffIcon" onClick={() => { close() }}>
                       <FormControlLabel
-                      control={
-                        <HighlightOffIcon sx={{ fontSize: '27px',}} />
-                      }
+                        control={
+                          <HighlightOffIcon sx={{ fontSize: '27px', }} />
+                        }
                       />
                     </IconButton>
                   </Box>
@@ -144,27 +144,27 @@ const PopupAddPosts = (props) => {
                   />}
                 />
               </div>
-              <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between", padding: '0 15px 0 7px'}}>
+              <CardActions disableSpacing sx={{ display: "flex", justifyContent: "space-between", padding: '0 15px 0 7px' }}>
                 <Box>
-                <IconButton aria-label="VideocamOutlinedIcon">
-                  <FormControlLabel
-                    label="Live Video"
-                    control={
-                      <Checkbox
-                        icon={<VideocamOutlinedIcon />}
-                        checkedIcon={<VideocamOutlinedIcon />}
-                      />
-                    }
-                  />
-                </IconButton>
-                <IconButton color="primary" aria-label="upload picture" component="label" sx={{ color: '#888' }}>
-                  <input hidden accept="image/*" name='imgPost' type="file" onChange={handleChange} />
-                  <ImageOutlinedIcon />
-                  <Typography variant="body2" gutterBottom>
-                    Photo/Video
-                  </Typography>
-                </IconButton>
-                {/* <IconButton aria-label="PhotoOutlinedIcon">
+                  <IconButton aria-label="VideocamOutlinedIcon">
+                    <FormControlLabel
+                      label="Live Video"
+                      control={
+                        <Checkbox
+                          icon={<VideocamOutlinedIcon />}
+                          checkedIcon={<VideocamOutlinedIcon />}
+                        />
+                      }
+                    />
+                  </IconButton>
+                  <IconButton color="primary" aria-label="upload picture" component="label" sx={{ color: '#888' }}>
+                    <input hidden accept="image/*" name='imgPost' type="file" onChange={handleChange} />
+                    <ImageOutlinedIcon />
+                    <Typography variant="body2" gutterBottom>
+                      Photo/Video
+                    </Typography>
+                  </IconButton>
+                  {/* <IconButton aria-label="PhotoOutlinedIcon">
               <FormControlLabel
                 label="Photo/Video"
                 control={
@@ -175,15 +175,15 @@ const PopupAddPosts = (props) => {
                 }
               />
             </IconButton> */}
-                <IconButton aria-label="SentimentSatisfiedAltOutlinedIcon">
-                  <FormControlLabel
-                    label="Feeling"
-                    control={
-                      <SentimentSatisfiedAltOutlinedIcon />
-                    }
-                  />
-                </IconButton>
-                  </Box>
+                  <IconButton aria-label="SentimentSatisfiedAltOutlinedIcon">
+                    <FormControlLabel
+                      label="Feeling"
+                      control={
+                        <SentimentSatisfiedAltOutlinedIcon />
+                      }
+                    />
+                  </IconButton>
+                </Box>
                 <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1 }} onClick={addPosts}>
                   Post
                   {/* <input hidden accept="image/*" multiple type="file" /> */}

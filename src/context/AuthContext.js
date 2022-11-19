@@ -77,6 +77,7 @@ export const AuthContextProvider = ({ children }) => {
     signInWithGoogle,
     HandelSignOut,
     userIn,
+    usersList, setUsersList
   };
 
   return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
