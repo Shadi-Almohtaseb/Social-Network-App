@@ -19,11 +19,13 @@ const Feed = () => {
   }, []);
 
   return (
-    <Box flex={4} p={2}>
+    <Box className="pt-10 flex items-center justify-center flex-wrap gap-5 mx-8 w-full xl:mr-[30rem] xl:ml-[18rem] lg:mr-[38rem] flex-col xl2:w-[60] xl:w-[50rem] lg2:w-[60rem] lg:w-[45rem] lg:ml-10 md:w-[45rem]">
       <PopupAddPosts postData={data} />
-      {data.map((item) => {
-        return <Post item={item} />;
-      })}
+      <Box>
+        {data.map((item) => {
+          return <Post item={item} />;
+        })}
+      </Box>
     </Box>
   );
 };

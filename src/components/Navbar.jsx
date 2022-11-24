@@ -104,6 +104,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
                 placeholder="search for users..."
                 size="small"
                 name="inputUser"
+                className="text-black dark:text-white"
               />
             )}
           />

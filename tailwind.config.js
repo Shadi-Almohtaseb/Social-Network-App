@@ -2,6 +2,7 @@
 module.exports = {
   content: ["./src/**/*.{js,jsx,ts,tsx}"],
   important: "#root",
+  darkMode: "class",
   theme: {
     screens: {
       xs1: "350px",
@@ -10,8 +11,10 @@ module.exports = {
       md1: "700px",
       md2: "800px",
       md3: "900px",
-      lg: "1024px",
-      xl: "1280px",
+      lg: "1224px",
+      lg2: "1420px",
+      xl: "1500px",
+      xl2: "1660px",
     },
   },
   plugins: [],
