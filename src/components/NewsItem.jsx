@@ -33,21 +33,21 @@ const NewsItem = ({ newItem }) => {
               {titleToggle ? "... Read More" : "  Read Less"}
             </Typography>
           </Typography>
-          <Link
+          <a
             className="text-blue-500 hover:underline"
             target="_blank"
-            to="https://www.engadget.com/the-morning-after-uk-competition-regulator-investigates-apple-and-googles-mobile-dominance-121545408.html"
+            href={`${newItem.url}`}
           >
             {newItem.url}
-          </Link>
+          </a>
           <Box className="flex flex-col mb-3">
-            <Link to={newItem.urlToImage} target="_blank">
+            <a href={newItem.urlToImage} target="_blank">
               <img
                 src={`${newItem.urlToImage}`}
                 alt="photo_News"
                 className="rounded-lg my-2"
               />
-            </Link>
+            </a>
             <Typography variant="body2">
               <Typography
                 variant="button"
