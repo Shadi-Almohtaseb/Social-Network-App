@@ -18,7 +18,7 @@ import SentimentSatisfiedAltOutlinedIcon from "@mui/icons-material/SentimentSati
 
 const AddPosts = () => {
   return (
-    <Card>
+    <Card className="flex-col rounded-[10px] shadow-xl py-5 px-5 w-full xl:w-[50rem] lg2:w-[60rem] lg:w-[45rem] md1:w-[42rem] sm:w-[35rem] xs1:w-[20rem] border-solid border-gray-300 border-[1px]">
       <CssBaseline />
       <CardHeader
         avatar={
@@ -54,7 +54,7 @@ const AddPosts = () => {
               />
             }
           />
-          <Typography className="hidden xs:flex">Live Video</Typography>
+          <Typography className="hidden md1:flex">Live Video</Typography>
         </IconButton>
         <IconButton aria-label="PhotoOutlinedIcon">
           <FormControlLabel
@@ -65,17 +65,17 @@ const AddPosts = () => {
               />
             }
           />
-          <Typography className="hidden xs:flex">Photo/Video</Typography>
+          <Typography className="hidden md1:flex">Photo/Video</Typography>
         </IconButton>
         <IconButton aria-label="SentimentSatisfiedAltOutlinedIcon">
           <FormControlLabel control={<SentimentSatisfiedAltOutlinedIcon />} />
-          <Typography className="hidden xs:flex">Feeling</Typography>
+          <Typography className="hidden md1:flex">Feeling</Typography>
         </IconButton>
         <Button
           variant="contained"
           component="label"
           sx={{ padding: " 8px 26px", borderRadius: 1 }}
-          className="xl:ml-96 lg:ml-[33rem] mr-5 md3:ml-[23rem] md2:ml-[17rem] md1:ml-[12rem] sm:ml-[8rem] xs1:ml-[2.7rem]"
+          className=""
         >
           Post
           {/* <input hidden accept="image/*" multiple type="file" /> */}

@@ -20,12 +20,7 @@ const Home = () => {
       <ThemeProvider theme={darkTheme}>
         <Box bgcolor={"background.default"} color={"text.primary"}>
           <Navbar openSide={openSide} setOpenSide={setOpenSide} />
-          <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="space-between"
-            width="100%"
-          >
+          <Box className="flex">
             <Sidebar
               mode={mode}
               setMode={setMode}
@@ -34,7 +29,7 @@ const Home = () => {
             />
             <Feed />
             <Rightbar />
-          </Stack>
+          </Box>
         </Box>
       </ThemeProvider>
     </>

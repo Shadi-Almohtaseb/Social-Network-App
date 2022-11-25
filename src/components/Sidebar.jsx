@@ -21,14 +21,15 @@ import { Link } from "react-router-dom";
 const Sidebar = ({ mode, setMode, openSide }) => {
   return (
     <Box
-      flex={1}
-      p={2}
       sx={{
-        display: { xs: "none", md: "block" },
-        display: openSide == false ? "none" : "block",
+        display: { xs: "none", md: "flex" },
+        display: openSide == false ? "none" : "flex",
       }}
+      className="pt-5 xl:flex hidden rounded-xl fixed left-3 top-20 bottom-0"
     >
-      <Box position="fixed">
+      <Box
+      //position="fixed"
+      >
         <List>
           <ListItem disablePadding>
             <ListItemButton LinkComponent="a" href="#">
