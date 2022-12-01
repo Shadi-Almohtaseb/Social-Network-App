@@ -15,11 +15,21 @@ import PendingIcon from "@mui/icons-material/Pending";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { UserAuth } from "../../context/AuthContext";
+import { useState } from "react";
 
 const Post = ({ item }) => {
+  const [userPosts, setUserPosts] = useState({})
+  const { usersList } = UserAuth();
+  usersList.map(u => {
+    if (u.email === item.email) {
+      // console.log(u);
+      // setUserPosts(u)
+    } 
+  })
   return (
     <div>
-      <Card sx={{ marginBottom: { xs: 5 } }}>
+      <Card sx={{ marginBottom: { xs: 5 }}}>
         <CardHeader
           avatar={
             <Avatar
@@ -36,7 +46,7 @@ const Post = ({ item }) => {
             </IconButton>
           }
           title="Shadi Almohtaseb"
-          subheader="September 14, 2022"
+          subheader={item.date}
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">

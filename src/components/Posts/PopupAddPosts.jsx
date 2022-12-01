@@ -47,8 +47,6 @@ const PopupAddPosts = (props) => {
     if (!userIn) navigate("/signin");
   }, [userIn]);
 
-
-
   const handleChange = e => {
     if (e.target.files[0]) {
       const image = e.target.files[0]
@@ -120,7 +118,7 @@ const PopupAddPosts = (props) => {
                   sx={{ display: 'flex', alignItems: 'flex-start' }}
                   avatar={
                     <Avatar
-                      src="https://source.unsplash.com/random"
+                      src={userIn?.image}
                       sx={{ width: 50, height: 50 }}
                       aria-label="recipe"
                     />

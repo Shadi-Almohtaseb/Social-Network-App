@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import {
     Avatar,
     Card,
@@ -15,16 +15,24 @@ import {
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
+import { Navigate } from "react-router-dom";
+import { UserAuth } from "../../context/AuthContext";
 
-const AddPosts = (props) => {
+const AddPosts = () => {
+    const { userIn } = UserAuth();
+
+    useEffect(() => {
+        if (!userIn) Navigate("/signin");
+    }, [userIn]);
+
     return (
         <div>
-            <Card sx={{ marginBottom: { xs: 5 }}}>
+            <Card sx={{ marginBottom: { xs: 5 } }}>
                 <div>
                     <CardHeader
                         avatar={
                             <Avatar
-                                src="https://source.unsplash.com/random"
+                                src={userIn?.image}
                                 sx={{ width: 50, height: 50 }}
                                 aria-label="recipe"
                             />
@@ -75,7 +83,7 @@ const AddPosts = (props) => {
                             }
                         />
                     </IconButton>
-                    <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1}}>
+                    <Button variant="contained" component="label" sx={{ padding: " 8px 26px", borderRadius: 1 }}>
                         Post
                         {/* <input hidden accept="image/*" multiple type="file" /> */}
                     </Button>
