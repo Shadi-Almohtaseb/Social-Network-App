@@ -4,7 +4,7 @@ import Rightbar from "../components/Rightbar";
 import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Navbar from "../components/Navbar";
-import Profile from "../components/profile/Profiles";
+import Profile from "../components/profile/Profile";
 
 const Home = () => {
   const [openSide, setOpenSide] = useState(true);

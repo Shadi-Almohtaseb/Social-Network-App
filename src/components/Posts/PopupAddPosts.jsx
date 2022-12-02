@@ -80,7 +80,7 @@ const PopupAddPosts = (props) => {
 
   return (
     <div>
-      <Popup Popup trigger={<button button > <AddPosts /></button>} position="center" modal nested >
+      <Popup Popup trigger={<button> <AddPosts /></button>} position="center" modal nested >
         {close => (
           <div className="modal">
             <Card>

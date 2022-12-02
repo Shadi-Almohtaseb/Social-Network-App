@@ -3,14 +3,14 @@ import {
     Avatar,
     Card,
     CardActions,
-    CardContent,
     CardHeader,
-    CardMedia,
     Checkbox,
     IconButton,
     FormControlLabel,
     TextField,
     Button,
+    Container,
+    Box,
 } from "@mui/material";
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
@@ -26,32 +26,30 @@ const AddPosts = () => {
     }, [userIn]);
 
     return (
-        <div>
+        <Box flex={4}>
             <Card sx={{ marginBottom: { xs: 5 } }}>
-                <div>
-                    <CardHeader
-                        avatar={
-                            <Avatar
-                                src={userIn?.image}
-                                sx={{ width: 50, height: 50 }}
-                                aria-label="recipe"
-                            />
-                        }
-                        title={<TextField
-                            id="filled-hidden-label-small"
-                            fullWidth
-                            size="small"
-                            placeholder="What's happening?"
-                            sx={{
-                                backgroundColor: "#f1f1f1", borderRadius: '10px',
-                                "& .MuiInputLabel-root": { color: 'green' },//styles the label
-                                "& .MuiOutlinedInput-root": {
-                                    "& > fieldset": { border: "none", },
-                                },
-                            }}
-                        />}
-                    />
-                </div>
+                <CardHeader
+                    avatar={
+                        <Avatar
+                            src={userIn?.image}
+                            sx={{ width: 50, height: 50 }}
+                            aria-label="recipe"
+                        />
+                    }
+                    title={<TextField
+                        id="filled-hidden-label-small"
+                        fullWidth
+                        size="small"
+                        placeholder="What's happening?"
+                        sx={{
+                            backgroundColor: "#f1f1f1", borderRadius: '10px',
+                            "& .MuiInputLabel-root": { color: 'green' },//styles the label
+                            "& .MuiOutlinedInput-root": {
+                                "& > fieldset": { border: "none", },
+                            },
+                        }}
+                    />}
+                />
                 <CardActions disableSpacing>
                     <IconButton aria-label="VideocamOutlinedIcon">
                         <FormControlLabel
@@ -89,7 +87,7 @@ const AddPosts = () => {
                     </Button>
                 </CardActions>
             </Card>
-        </div>
+        </Box>
     );
 };
 
