@@ -4,7 +4,7 @@ import Rightbar from "../components/Rightbar";
 import Sidebar from "../components/Sidebar";
 import Feed from "../components/Feed";
 import Navbar from "../components/Navbar";
-import Profile from "../components/profile/Profile";
+import MyProfile from "../components/profile/MyProfile/MyProfile";
 
 const Home = () => {
   const [openSide, setOpenSide] = useState(true);
@@ -33,7 +33,7 @@ const Home = () => {
               openSide={openSide}
               setOpenSide={setOpenSide}
             />
-            <Profile />
+            <MyProfile />
             {/* <Feed />
             <Rightbar /> */}
           </Stack>

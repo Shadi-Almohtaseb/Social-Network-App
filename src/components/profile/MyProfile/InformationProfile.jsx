@@ -48,7 +48,6 @@ const InformationProfile = ({userIn}) => {
                             Edit Cover Photo
                         </Button>
                     }
-                // <Button sx={{ backgroundColor: grey[200], color: grey[800] }} variant="contained">Edit</Button>
                 />
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box>

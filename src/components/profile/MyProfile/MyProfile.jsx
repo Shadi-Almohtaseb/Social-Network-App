@@ -3,7 +3,7 @@ import {
   Container,
   Stack
 } from "@mui/material";
-import { UserAuth } from "../../context/AuthContext";
+import { UserAuth } from "../../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import InformationProfile from "./InformationProfile";
 import FeedProfile from "./FeedProfile";
@@ -12,7 +12,7 @@ import LeftBarProfile from "./LeftbarProfile";
 import { Box } from "@mui/system";
 import RightBarProfile from "./RightbarProfile";
 
-const Profile = () => {
+const MyProfile = () => {
   const { userIn } = UserAuth();
 
   useEffect(() => {
@@ -45,4 +45,4 @@ const Profile = () => {
   );
 };
 
-export default Profile;
+export default MyProfile;

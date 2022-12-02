@@ -1,11 +1,11 @@
 import { Box, Container } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import { auth } from '../../firebase.config';
+import { auth } from '../../../firebase.config';
 import { onValue, ref } from 'firebase/database';
-import { db } from '../../firebase.config';
-import { UserAuth } from '../../context/AuthContext';
-import PopupAddPosts from '../Posts/PopupAddPosts';
-import Post from '../Posts/Post';
+import { db } from '../../../firebase.config';
+import { UserAuth } from '../../../context/AuthContext';
+import PopupAddPosts from '../../Posts/PopupAddPosts';
+import Post from '../../Posts/Post';
 
 const FeedProfile = () => {
   const [data, setData] = useState([]);

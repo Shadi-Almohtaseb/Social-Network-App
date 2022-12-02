@@ -12,7 +12,7 @@ const RightBarProfile = () => {
         <Container fixed>
             <Box sx={{ padding: 2, background: 'white' }} boxShadow={2}>
                 <Typography variant="h6" sx={{ color: grey[900], marginBottom: 2 }}>
-                    Your friend's
+                    Friend's
                 </Typography>
             </Box>
         </Container>
