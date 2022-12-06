@@ -35,8 +35,8 @@ const Home = () => {
               />
             </Box>
             <Box flex={7}>
-              {/* <MyProfile /> */}
-              <PageHome />
+              <MyProfile />
+              {/* <PageHome /> */}
             </Box>
           </Stack>
         </Box>
