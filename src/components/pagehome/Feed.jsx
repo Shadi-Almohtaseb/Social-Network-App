@@ -1,21 +1,12 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import Post from './Posts/Post';
-import PopupAddPosts from "./Posts/PopupAddPosts";
-import { auth } from '../firebase.config'; 
+import Post from '../Posts/Post';
+import PopupAddPosts from '../Posts/PopupAddPosts';
 import { onValue, ref } from 'firebase/database';
-import { db } from '../firebase.config';
-import { UserAuth } from '../context/AuthContext';
+import { db } from '../../firebase.config';
 
 const Feed = () => {
   const [data, setData] = useState([]);
-  // const [userPosts, setUserPosts] = useState({})
-  // const { usersList } = UserAuth();
-
-  // usersList.map(u => {
-  //   setUserPosts(u)
-  // })
-  // console.log(userPosts);
 
   useEffect(() => {
     const query = ref(db, "posts");
@@ -38,10 +29,6 @@ const Feed = () => {
       {
         data.map((item)=>
         {
-          // if(item.email == )
-          // {
-
-          // }
           return <Post item={item}/>
         })
       }

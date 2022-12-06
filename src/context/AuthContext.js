@@ -35,7 +35,8 @@ export const AuthContextProvider = ({ children }) => {
     set(ref(db, 'users/' + usersList.length), {
       email: result.user.email,
       name: result.user.displayName,
-      image: result.user.photoURL,
+      avatar: result.user.photoURL,
+      imageProfile: 'https://source.unsplash.com/random'
     });
   }
 

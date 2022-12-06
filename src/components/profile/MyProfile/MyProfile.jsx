@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   Container,
   Stack
@@ -14,14 +14,17 @@ import RightBarProfile from "./RightbarProfile";
 
 const MyProfile = () => {
   const { userIn } = UserAuth();
+  const { usersList } = UserAuth();
 
   useEffect(() => {
     if (!userIn) Navigate("/signin");
   }, [userIn]);
 
+  const userProfile = usersList.find(u => u.email === userIn?.email)
+
   return (
     <Container fixed>
-      <InformationProfile userIn={userIn} />
+      <InformationProfile user={userProfile} />
       <Container fixed>
         <Stack
           direction="row"
@@ -31,13 +34,13 @@ const MyProfile = () => {
           sx={{ backgroundColor: grey[200] }}
         >
           <Box flex={1}>
-          <LeftBarProfile />
+            <LeftBarProfile />
           </Box>
-          <Box flex={3}>  
-          <FeedProfile />
+          <Box flex={3}>
+            <FeedProfile user={userProfile}/>
           </Box>
           <Box flex={1}>
-          <RightBarProfile />
+            <RightBarProfile />
           </Box>
         </Stack>
       </Container>

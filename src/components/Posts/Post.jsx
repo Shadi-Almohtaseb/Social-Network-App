@@ -16,24 +16,19 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserAuth } from "../../context/AuthContext";
-import { useState } from "react";
 
 const Post = ({ item }) => {
-  const [userPosts, setUserPosts] = useState({})
   const { usersList } = UserAuth();
-  usersList.map(u => {
-    if (u.email === item.email) {
-      // console.log(u);
-      // setUserPosts(u)
-    } 
-  })
+
+  const user = usersList?.find(u => u?.email === item?.email)
+
   return (
     <div>
       <Card sx={{ marginBottom: { xs: 5 }}}>
         <CardHeader
           avatar={
             <Avatar
-              src="https://source.unsplash.com/random"
+              src={user.avatar}
               sx={{ bgColor: "red" }}
               aria-label="recipe"
             >
@@ -45,7 +40,7 @@ const Post = ({ item }) => {
               <PendingIcon />
             </IconButton>
           }
-          title="Shadi Almohtaseb"
+          title={user.name}
           subheader={item.date}
         />
         <CardContent>

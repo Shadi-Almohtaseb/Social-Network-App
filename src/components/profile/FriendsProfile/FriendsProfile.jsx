@@ -13,11 +13,8 @@ import { Box } from "@mui/system";
 import RightBarProfile from "./RightbarProfile";
 
 const FriendsProfile = () => {
-  const { userIn } = UserAuth();
 
-  useEffect(() => {
-    if (!userIn) Navigate("/signin");
-  }, [userIn]);
+  const userProfile = usersList.find(u => u.email === userIn?.email)
 
   return (
     <Container fixed>
@@ -34,7 +31,7 @@ const FriendsProfile = () => {
           <LeftBarProfile />
           </Box>
           <Box flex={3}>  
-          <FeedProfile />
+          <FeedProfile user={userProfile}/>
           </Box>
           <Box flex={1}>
           <RightBarProfile />

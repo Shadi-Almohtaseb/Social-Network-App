@@ -14,21 +14,22 @@ import { grey } from '@mui/material/colors';
 import RemoveRedEyeOutlinedIcon from '@mui/icons-material/RemoveRedEyeOutlined';
 import BackupOutlinedIcon from '@mui/icons-material/BackupOutlined';
 
-const InformationProfile = ({userIn}) => {
+const InformationProfile = ({user}) => {
+    console.log(user)
     return (
         <Container fixed>
-            <Card flex={4} sx={{ marginBottom: { xs: 5 }, marginRight: { xs: 3 }, display: 'flex', alignContent: 'start', flexDirection: 'column', position: 'relative' }} p={2}>
+            <Card sx={{ marginBottom: { xs: 5 }, position: 'relative' }}>
                 <CardMedia sx={{ height: '400px' }}
                     component="img"
                     height="1000"
-                    image="https://source.unsplash.com/random"
+                    image={user?.imageProfile}
                     alt="Paella dish"
                 />
                 <CardHeader sx={{ position: 'absolute', bottom: '72px', width: '100%' }}
 
                     avatar={
                         <Avatar
-                            src={userIn?.image}
+                            src={user?.avatar}
                             sx={{ width: 120, height: 120 }}
                             aria-label="recipe"
                         >
@@ -52,7 +53,7 @@ const InformationProfile = ({userIn}) => {
                 <CardActions sx={{ display: 'flex', justifyContent: 'space-between' }}>
                     <Box>
                         <Typography variant="h6" sx={{ color: grey[1000] }}>
-                            {userIn?.displayName}
+                            {user?.name}
                         </Typography>
                         <Typography variant="body1" sx={{ color: grey[500] }}>
                             hello word

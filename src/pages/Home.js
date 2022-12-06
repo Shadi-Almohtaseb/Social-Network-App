@@ -1,8 +1,7 @@
 import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import React, { useState } from "react";
-import Rightbar from "../components/Rightbar";
+import PageHome from "../components/pagehome/HomePage";
 import Sidebar from "../components/Sidebar";
-import Feed from "../components/Feed";
 import Navbar from "../components/Navbar";
 import MyProfile from "../components/profile/MyProfile/MyProfile";
 
@@ -27,15 +26,18 @@ const Home = () => {
             justifyContent="space-between"
             width="100%"
           >
-            <Sidebar
-              mode={mode}
-              setMode={setMode}
-              openSide={openSide}
-              setOpenSide={setOpenSide}
-            />
-            <MyProfile />
-            {/* <Feed />
-            <Rightbar /> */}
+            <Box flex={1}>
+              <Sidebar
+                mode={mode}
+                setMode={setMode}
+                openSide={openSide}
+                setOpenSide={setOpenSide}
+              />
+            </Box>
+            <Box flex={7}>
+              {/* <MyProfile /> */}
+              <PageHome />
+            </Box>
           </Stack>
         </Box>
       </ThemeProvider>
