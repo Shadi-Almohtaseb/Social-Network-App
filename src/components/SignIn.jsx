@@ -43,9 +43,9 @@ const SignIn = () => {
   const handelSignIn = async () => {
     await signInWithGoogle();
   };
-  React.useEffect(() => {
-    if (userIn) navigate("/");
-  }, [userIn]);
+  // React.useEffect(() => {
+  //   if (userIn !== undefined) navigate("/");
+  // }, [userIn]);
 
   return (
     <ThemeProvider theme={theme}>

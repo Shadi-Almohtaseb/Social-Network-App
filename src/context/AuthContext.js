@@ -8,6 +8,7 @@ import {
 import { auth } from "../firebase.config";
 import { db } from '../firebase.config';
 import { ref, set, onValue } from "firebase/database";
+import { Navigate } from "react-router-dom";
 
 const AuthContext = createContext();
 
@@ -55,8 +56,6 @@ export const AuthContextProvider = ({ children }) => {
         if (result.user.email !== userProfile) {
           addUsers(result);
         }
-        // if (emailExist)
-        //   addUsers(result);
       })
       .catch((error) => {
         console.log(error);

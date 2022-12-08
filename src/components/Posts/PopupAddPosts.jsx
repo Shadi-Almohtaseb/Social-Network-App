@@ -118,7 +118,7 @@ const PopupAddPosts = (props) => {
                   sx={{ display: 'flex', alignItems: 'flex-start' }}
                   avatar={
                     <Avatar
-                      src={userIn?.image}
+                      src={userIn?.photoURL}
                       sx={{ width: 50, height: 50 }}
                       aria-label="recipe"
                     />

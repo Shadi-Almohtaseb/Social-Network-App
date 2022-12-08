@@ -25,13 +25,15 @@ const AddPosts = () => {
         if (!userIn) Navigate("/signin");
     }, [userIn]);
 
+    console.log(userIn?.image)
+
     return (
         <Box flex={4}>
             <Card sx={{ marginBottom: { xs: 5 } }}>
                 <CardHeader
                     avatar={
                         <Avatar
-                            src={userIn?.image}
+                            src={userIn?.photoURL}
                             sx={{ width: 50, height: 50 }}
                             aria-label="recipe"
                         />
