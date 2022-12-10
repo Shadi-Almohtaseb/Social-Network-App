@@ -43,6 +43,7 @@ const SignIn = () => {
   const handelSignIn = async () => {
     await signInWithGoogle();
   };
+
   React.useEffect(() => {
     if (userIn) navigate("/");
   }, [userIn]);
