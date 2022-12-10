@@ -8,6 +8,7 @@ import SettingsIcon from '@mui/icons-material/Settings';
 import LocalGroceryStoreIcon from '@mui/icons-material/LocalGroceryStore';
 import AccountCircleIcon from '@mui/icons-material/AccountCircle';
 import NightsStayIcon from '@mui/icons-material/NightsStay';
+import { Link } from 'react-router-dom';
 
 const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
 
@@ -64,12 +65,14 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
+            <Link to="/Profile">
             <ListItemButton LinkComponent='a' href='#'>
               <ListItemIcon>
                 <AccountCircleIcon color='primary' />
               </ListItemIcon>
               <ListItemText primary="Profile" />
             </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding onClick={(e) => setMode(mode == 'dark' ? 'light' : 'dark')}>
             <ListItemButton LinkComponent='a' href='#'>

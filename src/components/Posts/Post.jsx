@@ -15,15 +15,20 @@ import PendingIcon from "@mui/icons-material/Pending";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
+import { UserAuth } from "../../context/AuthContext";
 
 const Post = ({ item }) => {
+  const { usersList } = UserAuth();
+
+  const user = usersList?.find(u => u?.email === item?.email)
+
   return (
     <div>
-      <Card sx={{ marginBottom: { xs: 5 } }}>
+      <Card sx={{ marginBottom: { xs: 5 }}}>
         <CardHeader
           avatar={
             <Avatar
-              src="https://source.unsplash.com/random"
+              src={user.avatar}
               sx={{ bgColor: "red" }}
               aria-label="recipe"
             >
@@ -35,8 +40,8 @@ const Post = ({ item }) => {
               <PendingIcon />
             </IconButton>
           }
-          title="Shadi Almohtaseb"
-          subheader="September 14, 2022"
+          title={user.name}
+          subheader={item.date}
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">

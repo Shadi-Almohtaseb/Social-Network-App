@@ -1,10 +1,9 @@
 import { Box } from '@mui/material';
 import React, { useEffect, useState } from 'react'
-import Post from './Posts/Post';
-import PopupAddPosts from "./Posts/PopupAddPosts";
-import { auth } from '../firebase.config'; 
+import Post from '../Posts/Post';
+import PopupAddPosts from '../Posts/PopupAddPosts';
 import { onValue, ref } from 'firebase/database';
-import { db } from '../firebase.config';
+import { db } from '../../firebase.config';
 
 const Feed = () => {
   const [data, setData] = useState([]);
