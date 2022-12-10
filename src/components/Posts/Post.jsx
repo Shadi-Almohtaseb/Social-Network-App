@@ -24,7 +24,10 @@ const Post = ({ item }) => {
 
   return (
     <div>
-      <Card sx={{ marginBottom: { xs: 5 }}}>
+      <Card
+        sx={{ marginBottom: { xs: 5 } }}
+        className="flex-col rounded-[10px] shadow-xl py-5 px-5 xl2:w-[60] xl:w-[50rem] lg2:w-[60rem] lg:w-[45rem] w-full md:w-[45rem] border-solid border-gray-300 border-[1px] "
+      >
         <CardHeader
           avatar={
             <Avatar

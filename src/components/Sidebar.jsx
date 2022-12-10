@@ -13,19 +13,27 @@ import { Link } from 'react-router-dom';
 const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
 
   return (
-    <Box flex={1} p={2} sx={{ display: { xs: 'none', md: 'block' } , display: openSide == false ? 'none' : 'block' }}>
-      <Box position='fixed'>
+    <Box
+      flex={1}
+      p={2}
+      sx={{
+        display: { xs: "none", md: "flex" },
+        display: openSide == false ? "none" : "flex",
+      }}
+      className="pt-5 lg2:flex hidden rounded-xl fixed left-3 top-20 bottom-0"
+    >
+      <Box >
         <List>
-        <Link to="/" className='flex'>
-          <ListItem disablePadding>
-            <ListItemButton LinkComponent='a' href='#'>
-              <ListItemIcon>
-                <CottageIcon color='primary' />
-              </ListItemIcon>
-              <ListItemText primary="Home" />
-            </ListItemButton>
-          </ListItem>
-        </Link>
+          <Link to="/" className='flex'>
+            <ListItem disablePadding>
+              <ListItemButton LinkComponent='a' href='#'>
+                <ListItemIcon>
+                  <CottageIcon color='primary' />
+                </ListItemIcon>
+                <ListItemText primary="Home" />
+              </ListItemButton>
+            </ListItem>
+          </Link>
           <ListItem disablePadding>
             <ListItemButton LinkComponent='a' href='#'>
               <ListItemIcon>
@@ -68,12 +76,12 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
           </ListItem>
           <ListItem disablePadding>
             <Link to="/Profile" className='flex'>
-            <ListItemButton LinkComponent='a' href='#'>
-              <ListItemIcon>
-                <AccountCircleIcon color='primary' />
-              </ListItemIcon>
-              <ListItemText primary="Profile" />
-            </ListItemButton>
+              <ListItemButton LinkComponent='a' href='#'>
+                <ListItemIcon>
+                  <AccountCircleIcon color='primary' />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
             </Link>
           </ListItem>
           <ListItem disablePadding onClick={(e) => setMode(mode == 'dark' ? 'light' : 'dark')}>

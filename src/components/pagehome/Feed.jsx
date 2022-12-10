@@ -11,14 +11,9 @@ const Feed = () => {
   useEffect(() => {
     const query = ref(db, "posts");
     return onValue(query, (snapshot) => {
-      const postData = snapshot.val();
-
       if (snapshot.exists()) {
         // console.log(snapshot.val());
         setData(snapshot.val());
-        // Object.values(postData).map((item) => {
-        //   setData((data) => [...data, item]);
-        // });
       }
     });
   }, []); 
@@ -34,19 +29,18 @@ const Feed = () => {
 }
 
 const sorted = data.sort(sortByDate);
-console.log(sorted);
+// console.log(sorted);
 
   return (
-    <Box flex={4} sx={{backgroundColor: "#f1f1f1"}} p={2}>
-      <PopupAddPosts postData={data}/>
-      {
-        data.map((item)=>
-        {
-          return <Post item={item}/>
-        })
-      }
+    <Box className="pt-10 flex items-center justify-center flex-wrap gap-5 mx-8 w-full xl:mr-[30rem] xl:ml-[18rem] lg:mr-[38rem] flex-col xl2:w-[60] xl:w-[50rem] lg2:w-[60rem] lg:w-[45rem] lg:ml-10 md:w-[45rem]">
+      <PopupAddPosts postData={data} />
+      <Box>
+        {data.map((item) => {
+          return <Post item={item} />;
+        })}
+      </Box>
     </Box>
-  )
-}
+  );
+};
 
-export default Feed
+export default Feed;

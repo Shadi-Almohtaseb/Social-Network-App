@@ -18,13 +18,8 @@ const Home = ({isProfile,children}  ) => {
       <ThemeProvider theme={darkTheme}>
         <Box bgcolor={"background.default"} color={"text.primary"}>
           <Navbar openSide={openSide} setOpenSide={setOpenSide} />
-          <Stack
-            direction="row"
-            spacing={2}
-            justifyContent="space-between"
-            width="100%"
-          >
-            <Box flex={1}>
+
+            <Box className="flex" >
               <Sidebar
                 mode={mode}
                 setMode={setMode}
@@ -32,10 +27,9 @@ const Home = ({isProfile,children}  ) => {
                 setOpenSide={setOpenSide}
               />
             </Box>
-            <Box flex={7}>
+            <Box >
               {children}
             </Box>
-          </Stack>
         </Box>
       </ThemeProvider>
     </>
