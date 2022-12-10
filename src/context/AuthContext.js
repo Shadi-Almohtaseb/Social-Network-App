@@ -44,20 +44,20 @@ export const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        localStorage.setItem("UserEmail", result.user.email);
-        localStorage.setItem("UserName", result.user.displayName);
         const userProfile = usersList.find(u => u.email === result.user.email)
+        console.log(userProfile)
         // for (let i = 0; i <= usersList.length; i++) {
         //   if (result.user.email !== usersList[i].email) {
         //     setEmailExist(true)
         //     break;
         //   }
         // }
-        if (result.user.email !== userProfile) {
+        if (result.user.email !== userProfile.email) {
           addUsers(result);
         }
       })
       .catch((error) => {
+        console.log('error')
         console.log(error);
       });
   };

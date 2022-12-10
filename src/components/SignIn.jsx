@@ -44,7 +44,7 @@ const SignIn = () => {
     await signInWithGoogle();
   };
   // React.useEffect(() => {
-  //   if (userIn !== undefined) navigate("/");
+  //   if (userIn) navigate("/");
   // }, [userIn]);
 
   return (
