@@ -1,11 +1,9 @@
 import { Box, createTheme, Stack, ThemeProvider } from "@mui/material";
 import React, { useState } from "react";
-import PageHome from "../components/pagehome/HomePage";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
-import MyProfile from "../components/profile/MyProfile/MyProfile";
 
-const Home = () => {
+const Home = ({isProfile,children}  ) => {
   const [openSide, setOpenSide] = useState(true);
   const [mode, setMode] = useState("light");
 
@@ -35,8 +33,7 @@ const Home = () => {
               />
             </Box>
             <Box flex={7}>
-              <MyProfile />
-              {/* <PageHome /> */}
+              {children}
             </Box>
           </Stack>
         </Box>

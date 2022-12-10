@@ -15,14 +15,15 @@ import {
 import VideocamOutlinedIcon from '@mui/icons-material/VideocamOutlined';
 import PhotoOutlinedIcon from '@mui/icons-material/PhotoOutlined';
 import SentimentSatisfiedAltOutlinedIcon from '@mui/icons-material/SentimentSatisfiedAltOutlined';
-import { Navigate } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { UserAuth } from "../../context/AuthContext";
 
 const AddPosts = () => {
     const { userIn } = UserAuth();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        if (!userIn) Navigate("/signin");
+        if (!userIn) navigate("/signin");
     }, [userIn]);
 
     console.log(userIn?.image)

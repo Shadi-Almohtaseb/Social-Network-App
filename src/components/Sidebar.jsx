@@ -16,6 +16,7 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
     <Box flex={1} p={2} sx={{ display: { xs: 'none', md: 'block' } , display: openSide == false ? 'none' : 'block' }}>
       <Box position='fixed'>
         <List>
+        <Link to="/" className='flex'>
           <ListItem disablePadding>
             <ListItemButton LinkComponent='a' href='#'>
               <ListItemIcon>
@@ -24,6 +25,7 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
               <ListItemText primary="Home" />
             </ListItemButton>
           </ListItem>
+        </Link>
           <ListItem disablePadding>
             <ListItemButton LinkComponent='a' href='#'>
               <ListItemIcon>
@@ -65,7 +67,7 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <Link to="/Profile">
+            <Link to="/Profile" className='flex'>
             <ListItemButton LinkComponent='a' href='#'>
               <ListItemIcon>
                 <AccountCircleIcon color='primary' />

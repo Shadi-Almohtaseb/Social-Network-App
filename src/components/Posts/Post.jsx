@@ -28,7 +28,7 @@ const Post = ({ item }) => {
         <CardHeader
           avatar={
             <Avatar
-              src={user.avatar}
+              src={user?.avatar}
               sx={{ bgColor: "red" }}
               aria-label="recipe"
             >
@@ -40,7 +40,7 @@ const Post = ({ item }) => {
               <PendingIcon />
             </IconButton>
           }
-          title={user.name}
+          title={user?.name}
           subheader={item.date}
         />
         <CardContent>
