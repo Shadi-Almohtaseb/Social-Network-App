@@ -19,23 +19,23 @@ const Feed = () => {
   }, []); 
 
   function sortByDate(a, b) {
-    if (a.date < b.date) {
+    if (a.date > b.date) {
         return 1;
     }
-    if (a.date > b.date) {
+    if (a.date < b.date) {
         return -1;
     }
     return 0;
 }
 
 const sorted = data.sort(sortByDate);
-// console.log(sorted);
+console.log(sorted);
 
   return (
-    <Box className="pt-10 flex items-center justify-center flex-wrap gap-5 mx-8 w-full lg2:mr-[35rem] xl:ml-[18rem] lg:mr-[38rem] flex-col xl2:w-[60] xl:w-[50rem] lg2:w-[54rem] lg:w-[45rem] lg:ml-10 md:w-[45rem]">
+    <Box className="pt-10 flex items-center justify-center flex-wrap gap-5 mx-8 w-full lg2:mr-[35rem] xl:ml-[18rem] lg:mr-[30rem] flex-col xl2:w-[60] xl:w-[50rem] lg2:w-[54rem] lg:w-[45rem] lg:ml-10 md:w-[40rem]">
       <PopupAddPosts postData={data} />
       <Box>
-        {data.map((item) => {
+        {sorted.map((item) => {
           return <Post item={item} />;
         })}
       </Box>
