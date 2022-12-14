@@ -27,9 +27,7 @@ const Home = ({isProfile,children}  ) => {
                 setOpenSide={setOpenSide}
               />
             </Box>
-            <Box >
               {children}
-            </Box>
         </Box>
       </ThemeProvider>
     </>

@@ -13,8 +13,12 @@ const PageHome = () => {
                 justifyContent="space-between"
                 width="100%"
             >
+                <Box flex={5}>
                 <Feed />
+                </Box>
+                <Box flex={1}>
                 <Rightbar />
+                </Box>
             </Stack>
         </Container>
     )
