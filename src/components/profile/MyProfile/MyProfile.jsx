@@ -23,27 +23,24 @@ const MyProfile = () => {
   const userProfile = usersList.find(u => u.email === userIn?.email)
 
   return (
-    <Container fixed>
+    <Container className="ml-[12rem] w-[85%]">
       <InformationProfile user={userProfile} />
-      <Container fixed>
         <Stack
           direction="row"
           paddingTop={3}
-          justifyContent="space-between"
-          width="100%"
           sx={{ backgroundColor: grey[200] }}
+          className="ml-[2rem]"
         >
-          <Box flex={1}>
+          <Box >
             <LeftBarProfile />
           </Box>
-          <Box flex={3}>
+          <Box >
+            <RightBarProfile />
             <FeedProfile user={userProfile}/>
           </Box>
-          <Box flex={1}>
-            <RightBarProfile />
+          <Box >
           </Box>
         </Stack>
-      </Container>
     </Container>
   );
 };

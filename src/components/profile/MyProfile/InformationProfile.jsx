@@ -17,7 +17,7 @@ import BackupOutlinedIcon from '@mui/icons-material/BackupOutlined';
 const InformationProfile = ({user}) => {
     console.log(user)
     return (
-        <Container fixed>
+        <Container >
             <Card sx={{ marginBottom: { xs: 5 }, position: 'relative' }}>
                 <CardMedia sx={{ height: '400px' }}
                     component="img"

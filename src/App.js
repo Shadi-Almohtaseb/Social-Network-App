@@ -3,6 +3,7 @@ import MyProfile from "./components/profile/MyProfile/MyProfile";
 import SignIn from "./components/SignIn";
 import Home from "./pages/Home";
 import PageHome from "./components/pagehome/HomePage";
+import FriendsProfile from "./components/profile/FriendsProfile/FriendsProfile";
 
 const App = () => {
   return (
@@ -13,9 +14,14 @@ const App = () => {
             <PageHome />
           </Home>
         } />
-        <Route path="/Profile" element={
+        <Route path="/myProfile" element={
           <Home>
             <MyProfile />
+          </Home>
+        } />
+        <Route path={`/profile?email=:email`} element={
+          <Home>
+            <FriendsProfile email={'202834@ppu.edu.ps'}/>
           </Home>
         } />
         <Route path="/signin" element={<SignIn />} />

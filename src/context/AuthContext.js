@@ -30,6 +30,7 @@ export const AuthContextProvider = ({ children }) => {
 
   const addUsers = (result) => {
     set(ref(db, 'users/' + usersList.length), {
+      id: usersList.length,
       email: result.user.email,
       name: result.user.displayName,
       avatar: result.user.photoURL,
@@ -42,9 +43,6 @@ export const AuthContextProvider = ({ children }) => {
     signInWithPopup(auth, provider)
       .then((result) => {
         const userProfile = usersList?.find(u => u.email === result.user.email) 
-        console.log(usersList);
-        console.log(result.user.email);
-        console.log(userProfile);
 
         if (result.user.email !== userProfile?.email) {
           addUsers(result);
@@ -52,7 +50,6 @@ export const AuthContextProvider = ({ children }) => {
       })
       .catch((error) => {
         console.log(error);
-        console.log('error')
       });
   };
 

@@ -48,6 +48,7 @@ const PopupAddPosts = (props) => {
   }, [userIn]);
 
   const handleChange = e => {
+    
     if (e.target.files[0]) {
       const image = e.target.files[0]
       setImageAsFile(() => (image));
@@ -58,10 +59,6 @@ const PopupAddPosts = (props) => {
     const mountainImagesRef = sRef(storage, `posts/${imageAsFile.name + v4()}`);
     const current = new Date();
     const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-    // const url = '';
-    // console.log(imageAsFile)
-    // if (imageAsFile === null) {
-    // }
     const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + '/o/posts%2F' + mountainImagesRef.name + '?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd'
 
     uploadBytes(mountainImagesRef, imageAsFile).then(() => {
@@ -69,6 +66,7 @@ const PopupAddPosts = (props) => {
     });
 
     set(ref(db, 'posts/' + props.postData.length), {
+      id: props.postData.length,
       email: userIn?.email,
       date: date,
       content: content,

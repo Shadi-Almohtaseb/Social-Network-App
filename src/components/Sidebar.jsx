@@ -75,7 +75,7 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
             </ListItemButton>
           </ListItem>
           <ListItem disablePadding>
-            <Link to="/Profile" className='flex'>
+            <Link to="/myProfile" className='flex'>
               <ListItemButton LinkComponent='a' href='#'>
                 <ListItemIcon>
                   <AccountCircleIcon color='primary' />
