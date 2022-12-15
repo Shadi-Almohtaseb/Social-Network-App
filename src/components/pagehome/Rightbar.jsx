@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
 import { useEffect } from "react";
-import NewsItem from "./NewsItem";
+import NewsItem from "../NewsItem";
 
 const Rightbar = () => {
   const [news, setNews] = useState([]);

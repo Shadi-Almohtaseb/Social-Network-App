@@ -72,8 +72,8 @@ const Navbar = ({ openSide, setOpenSide }) => {
 
   const HandelSubmit = (e) => {
     e.preventDefault();
-    const name = e.target.inputUser.value;
-    console.log(name);
+    const email = e.target.inputUser.value;
+    navigate(`/profile?email=${email}`)
   };
 
   return (
@@ -95,7 +95,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
         <form onSubmit={HandelSubmit} className="hidden md1:flex gap-5">
           <Autocomplete
             freeSolo
-            options={usersList.map((u) => ({ label: u.name, user: u }))}
+            options={usersList.map((u) => ({ label: u.email, user: u }))}
             sx={{ width: 300 }}
             className="bg-slate-50 rounded-lg"
             renderInput={(params) => (

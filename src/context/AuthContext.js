@@ -13,9 +13,7 @@ const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
   const [userIn, setUserIn] = useState({});
-  const [emailExist, setEmailExist] = useState(false);
   const [usersList, setUsersList] = useState([]);
-
 
   useEffect(() => {
     const query = ref(db, "users");
@@ -25,7 +23,6 @@ export const AuthContextProvider = ({ children }) => {
       if (snapshot.exists()) {
         Object.values(data).map((item) => {
           setUsersList((usersList) => [...usersList, item]);
-          console.log(data)
         });
       }
     });
@@ -33,9 +30,11 @@ export const AuthContextProvider = ({ children }) => {
 
   const addUsers = (result) => {
     set(ref(db, 'users/' + usersList.length), {
+      id: usersList.length,
       email: result.user.email,
       name: result.user.displayName,
-      image: result.user.photoURL,
+      avatar: result.user.photoURL,
+      imageProfile: 'https://source.unsplash.com/random'
     });
   }
 
@@ -43,17 +42,11 @@ export const AuthContextProvider = ({ children }) => {
     const provider = new GoogleAuthProvider();
     signInWithPopup(auth, provider)
       .then((result) => {
-        console.log(result.user);
-        localStorage.setItem("UserEmail", result.user.email);
-        localStorage.setItem("UserName", result.user.displayName);
-        for (let i = 0; i <= usersList.length; i++) {
-          if (result.user.email !== usersList[i].email) {
-            setEmailExist(true)
-            break;
-          }
-        }
-        if (emailExist)
+        const userProfile = usersList?.find(u => u.email === result.user.email) 
+
+        if (result.user.email !== userProfile?.email) {
           addUsers(result);
+        }
       })
       .catch((error) => {
         console.log(error);
