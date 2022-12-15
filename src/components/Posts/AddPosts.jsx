@@ -26,8 +26,6 @@ const AddPosts = () => {
         if (!userIn) navigate("/signin");
     }, [userIn]);
 
-    console.log(userIn?.image)
-
     return (
         <Box flex={4}>
             <Card className="flex-col rounded-[10px] shadow-xl py-5 px-5 w-full xl:w-[50rem] lg2:w-[40rem] lg:w-[35rem] md1:w-[42rem] sm:w-[35rem] xs1:w-[20rem] border-solid border-gray-300 border-[1px]" sx={{ marginBottom: { xs: 5 } }}>
