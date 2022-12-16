@@ -19,10 +19,10 @@ const Feed = () => {
   }, []); 
 
   function sortByDate(a, b) {
-    if (a.date > b.date) {
+    if (b.date > a.date) {
         return 1;
     }
-    if (a.date < b.date) {
+    if (b.date < a.date) {
         return -1;
     }
     return 0;

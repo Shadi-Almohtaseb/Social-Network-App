@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Card,
@@ -24,37 +24,43 @@ import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserAuth } from "../../context/AuthContext";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 import DeleteIcon from '@mui/icons-material/Delete';
-import { ref, set } from "firebase/database";
+import { ref, remove, set, update } from "firebase/database";
 import { db } from "../../firebase.config";
 
 const Post = ({ item }) => {
-  const [open, setOpen] = React.useState(false);
-  const [likes, setLike] = React.useState(item.countLike)
+  const [open, setOpen] = useState(false);
+  const [likes, setLike] = useState(item.countLike);
+  const [notLike, setNotLike] = useState(false);
   const { usersList } = UserAuth();
-
+  
   const user = usersList?.find(u => u?.email === item?.email)
 
+  useEffect(() => {
+    update(ref(db, 'posts/' + item.id), {
+      countLike: likes
+    });
+  }, [likes]); 
 
   const handleClick = () => {
     setOpen(!open);
   };
 
   const HandelDelete = () => {
-
+    remove(ref(db, 'posts/' + item.id))
     setOpen(!open);
   }
 
   const HandelLike = () => {
-    setLike(likes + 1)
-    set(ref(db, 'posts/' + item.id), {
-      id: item.id,
-      email: item.email,
-      date: item.date,
-      content: item.content,
-      image: item.image,
-      countLike: likes,
-      countComment: 0,
-    });
+    if(notLike === false)
+    {
+      setLike(likes + 1)
+      setNotLike(true)
+    }
+    else
+    {
+      setLike(likes - 1)
+      setNotLike(false)
+    }
   }
 
   return (
@@ -66,7 +72,7 @@ const Post = ({ item }) => {
         <CardHeader
           avatar={
             <Avatar
-              src={user?.avatar}
+            src={user?.avatar}
               sx={{ bgColor: "red" }}
               aria-label="recipe"
             >
