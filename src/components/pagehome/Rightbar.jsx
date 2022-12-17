@@ -1,7 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
-import { useFetchData } from "../hooks/UseFetchData";
-import NewsItem from "./NewsItem";
+import { useFetchData } from "../../hooks/UseFetchData";
+import NewsItem from "../NewsItem";
 
 const Rightbar = () => {
   const fetchedData = useFetchData();

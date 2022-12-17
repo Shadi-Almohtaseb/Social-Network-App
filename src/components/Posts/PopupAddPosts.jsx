@@ -47,9 +47,8 @@ const PopupAddPosts = (props) => {
     if (!userIn) navigate("/signin");
   }, [userIn]);
 
-
-
   const handleChange = e => {
+    
     if (e.target.files[0]) {
       const image = e.target.files[0]
       setImageAsFile(() => (image));
@@ -59,11 +58,8 @@ const PopupAddPosts = (props) => {
   const addPosts = () => {
     const mountainImagesRef = sRef(storage, `posts/${imageAsFile.name + v4()}`);
     const current = new Date();
-    const date = `${current.getDate()}/${current.getMonth() + 1}/${current.getFullYear()}`;
-    // const url = '';
-    // console.log(imageAsFile)
-    // if (imageAsFile === null) {
-    // }
+    const date = `${current.getDate()}/${current.getMonth()+1}/${current.getFullYear()} ${current.getHours()}:${current.getMinutes()}:${current.getSeconds()}`;
+    // const ID = `${current.getDate()}${current.getMonth()+1}${current.getFullYear()}${current.getHours()}${current.getMinutes()}${current.getSeconds()}`;
     const url = 'https://firebasestorage.googleapis.com/v0/b/' + mountainImagesRef.bucket + '/o/posts%2F' + mountainImagesRef.name + '?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd'
 
     uploadBytes(mountainImagesRef, imageAsFile).then(() => {
@@ -71,6 +67,7 @@ const PopupAddPosts = (props) => {
     });
 
     set(ref(db, 'posts/' + props.postData.length), {
+      id: props.postData.length,
       email: userIn?.email,
       date: date,
       content: content,
@@ -82,7 +79,7 @@ const PopupAddPosts = (props) => {
 
   return (
     <div>
-      <Popup Popup trigger={<button button > <AddPosts /></button>} position="center" modal nested >
+      <Popup Popup trigger={<button> <AddPosts /></button>} position="center" modal nested >
         {close => (
           <div className="modal">
             <Card>
@@ -120,7 +117,7 @@ const PopupAddPosts = (props) => {
                   sx={{ display: 'flex', alignItems: 'flex-start' }}
                   avatar={
                     <Avatar
-                      src="https://source.unsplash.com/random"
+                      src={userIn?.photoURL}
                       sx={{ width: 50, height: 50 }}
                       aria-label="recipe"
                     />
