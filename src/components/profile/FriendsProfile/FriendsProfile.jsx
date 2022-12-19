@@ -10,9 +10,12 @@ import { grey } from "@mui/material/colors";
 import LeftBarProfile from "./LeftbarProfile";
 import { Box } from "@mui/system";
 import RightBarProfile from "./RightbarProfile";
-import { useSearchParams } from "react-router-dom";
+import { useSearchParams , useParams } from "react-router-dom";
 
-const FriendsProfile = ({email}) => {
+const FriendsProfile = () => {
+  // const email = '202834@ppu.edu.ps';
+  const {email} = useParams();
+  console.log('email',email);
   const [params, setParams] = useSearchParams();
   const newParams = new URLSearchParams(params);
   console.log(newParams);
