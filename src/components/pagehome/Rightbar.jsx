@@ -1,26 +1,10 @@
 import { Box, Typography } from "@mui/material";
-import React, { useState } from "react";
-import { useEffect } from "react";
+import React from "react";
+import { useFetchData } from "../../hooks/UseFetchData";
 import NewsItem from "../NewsItem";
 
 const Rightbar = () => {
-  const [news, setNews] = useState([]);
-  useEffect(() => {
-    const fetchData = () => {
-      fetch(
-        `https://newsapi.org/v2/everything?q=apple&from=2022-11-23&to=2022-11-23&sortBy=popularity&apiKey=${process.env.REACT_APP_API_KEY}`
-      )
-        .then((res) => {
-          res.json().then((data) => {
-            setNews(data.articles);
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
-    };
-    fetchData();
-  }, []);
+  const fetchedData = useFetchData();
 
   return (
     <Box
@@ -32,7 +16,7 @@ const Rightbar = () => {
       <Typography variant="h4" className="text-center mt-5 ">
         Latest News
       </Typography>
-      {news.map((newItem, index) => (
+      {fetchedData.map((newItem, index) => (
         <NewsItem newItem={newItem} key={index} />
       ))}
     </Box>
