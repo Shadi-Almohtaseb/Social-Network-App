@@ -1,8 +1,5 @@
 import React, { useEffect } from "react";
-import {
-  Container,
-  Stack
-} from "@mui/material";
+import { Container, Stack } from "@mui/material";
 import { UserAuth } from "../../../context/AuthContext";
 import { Navigate } from "react-router-dom";
 import InformationProfile from "./InformationProfile";
@@ -20,27 +17,26 @@ const MyProfile = () => {
     if (!userIn) Navigate("/signin");
   }, [userIn]);
 
-  const userProfile = usersList.find(u => u.email === userIn?.email)
+  const userProfile = usersList.find((u) => u.email === userIn?.email);
 
   return (
-    <Container className="ml-[12rem] w-[85%]">
+    <Container className="lg2:ml-[12rem] lg2:w-[85%]">
       <InformationProfile user={userProfile} />
-        <Stack
-          direction="row"
-          paddingTop={3}
-          sx={{ backgroundColor: grey[200] }}
-          className="ml-[2rem]"
-        >
-          <Box >
-            <LeftBarProfile />
-          </Box>
-          <Box >
-            <RightBarProfile />
-            <FeedProfile user={userProfile}/>
-          </Box>
-          <Box >
-          </Box>
-        </Stack>
+      <Stack
+        direction="row"
+        paddingTop={3}
+        sx={{ backgroundColor: grey[200] }}
+        className="ml-[2rem]"
+      >
+        <Box>
+          <LeftBarProfile />
+        </Box>
+        <Box>
+          <RightBarProfile />
+          <FeedProfile user={userProfile} />
+        </Box>
+        <Box></Box>
+      </Stack>
     </Container>
   );
 };
