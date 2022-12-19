@@ -23,45 +23,45 @@ import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import { UserAuth } from "../../context/AuthContext";
 import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
-import DeleteIcon from '@mui/icons-material/Delete';
+import DeleteIcon from "@mui/icons-material/Delete";
 import { ref, remove, set, update } from "firebase/database";
 import { db } from "../../firebase.config";
+import { useNavigate } from "react-router-dom";
 
 const Post = ({ item }) => {
   const [open, setOpen] = useState(false);
   const [likes, setLike] = useState(item.countLike);
   const [notLike, setNotLike] = useState(false);
   const { usersList } = UserAuth();
-  
-  const user = usersList?.find(u => u?.email === item?.email)
+
+  const user = usersList?.find((u) => u?.email === item?.email);
+
+  const navigate = useNavigate();
 
   useEffect(() => {
-    update(ref(db, 'posts/' + item.id), {
-      countLike: likes
+    update(ref(db, "posts/" + item.id), {
+      countLike: likes,
     });
-  }, [likes]); 
+  }, [likes]);
 
   const handleClick = () => {
     setOpen(!open);
   };
 
   const HandelDelete = () => {
-    remove(ref(db, 'posts/' + item.id))
+    remove(ref(db, "posts/" + item.id));
     setOpen(!open);
-  }
+  };
 
   const HandelLike = () => {
-    if(notLike === false)
-    {
-      setLike(likes + 1)
-      setNotLike(true)
+    if (notLike === false) {
+      setLike(likes + 1);
+      setNotLike(true);
+    } else {
+      setLike(likes - 1);
+      setNotLike(false);
     }
-    else
-    {
-      setLike(likes - 1)
-      setNotLike(false)
-    }
-  }
+  };
 
   return (
     <div>
@@ -70,28 +70,16 @@ const Post = ({ item }) => {
         className="flex-col rounded-[10px] shadow-xl py-5 px-5 xl2:w-[60] xl:w-[50rem] lg2:w-[40rem] lg:w-[45rem] w-full md:w-[45rem] border-solid border-gray-300 border-[1px] "
       >
         <CardHeader
-          avatar={
-            <Avatar
-            src={user?.avatar}
-              sx={{ bgColor: "red" }}
-              aria-label="recipe"
-            >
-            </Avatar>
-          }
+          avatar={<Avatar src={user?.avatar} aria-label="recipe"></Avatar>}
           action={
             <IconButton aria-label="settings">
-              <List
-                sx={{ bgcolor: 'background.paper' }}
-                component="nav"
-                aria-labelledby="nested-list-subheader"
-
-              >
+              <List component="nav" aria-labelledby="nested-list-subheader">
                 <ListItemButton className="w-[1rem]" onClick={handleClick}>
                   {open ? <PendingIcon /> : <PendingIcon />}
                 </ListItemButton>
                 <Collapse in={open} timeout="auto" unmountOnExit>
                   <List component="div" disablePadding>
-                    <ListItemButton onClick={HandelDelete} >
+                    <ListItemButton onClick={HandelDelete}>
                       <ListItemIcon>
                         <DeleteIcon />
                       </ListItemIcon>
@@ -102,7 +90,15 @@ const Post = ({ item }) => {
               </List>
             </IconButton>
           }
-          title={user?.name}
+          title={
+            <span
+              onClick={() => navigate(`profile/${user.email}`)}
+              className="cursor-pointer hover:underline font-bold"
+            >
+              {" "}
+              {user?.name}
+            </span>
+          }
           subheader={item.date}
         />
         <CardContent>
@@ -117,9 +113,8 @@ const Post = ({ item }) => {
           alt="Paella dish"
         />
         <CardActions disableSpacing>
-          <Box>
+          <Box className="border-solid border-2 border-indigo-300 rounded-full px-3 mr-3">
             <IconButton aria-label="VideocamOutlinedIcon" onClick={HandelLike}>
-
               <FormControlLabel
                 label="Like"
                 control={
@@ -132,8 +127,11 @@ const Post = ({ item }) => {
             </IconButton>
             {likes}
           </Box>
-          <IconButton aria-label="share">
-            <ShareIcon />
+          <IconButton
+            aria-label="share"
+            className="border-solid border-2 border-indigo-300 rounded-full px-3"
+          >
+            <ShareIcon /> <span className="text-lg pl-3">0</span>
           </IconButton>
         </CardActions>
       </Card>
