@@ -14,14 +14,14 @@ const App = () => {
             <PageHome />
           </Home>
         } />
-        <Route path="/myProfile" element={
+        <Route path="/profile" element={
           <Home>
             <MyProfile />
           </Home>
         } />
-        <Route path={`/profile?email=:email`} element={
+                <Route path={`/profile/:email`} element={
           <Home>
-            <FriendsProfile email={'202834@ppu.edu.ps'}/>
+            <FriendsProfile/>
           </Home>
         } />
         <Route path="/signin" element={<SignIn />} />

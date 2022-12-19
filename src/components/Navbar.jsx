@@ -73,7 +73,9 @@ const Navbar = ({ openSide, setOpenSide }) => {
   const HandelSubmit = (e) => {
     e.preventDefault();
     const email = e.target.inputUser.value;
-    navigate(`/profile?email=${email}`)
+    // console.log(email)
+    // navigate(`/profile?email=${email}`)
+    navigate(`/profile/${email}`)
   };
 
   return (
