@@ -4,26 +4,44 @@ import SignIn from "./components/SignIn";
 import Home from "./pages/Home";
 import PageHome from "./components/pagehome/HomePage";
 import FriendsProfile from "./components/profile/FriendsProfile/FriendsProfile";
+import ViewPost from "./components/viewSinglePost/ViewPost";
 
 const App = () => {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={
-          <Home>
-            <PageHome />
-          </Home>
-        } />
-        <Route path="/profile" element={
-          <Home>
-            <MyProfile />
-          </Home>
-        } />
-                <Route path={`/profile/:email`} element={
-          <Home>
-            <FriendsProfile/>
-          </Home>
-        } />
+        <Route
+          path="/"
+          element={
+            <Home>
+              <PageHome />
+            </Home>
+          }
+        />
+        <Route
+          path="/profile"
+          element={
+            <Home>
+              <MyProfile />
+            </Home>
+          }
+        />
+        <Route
+          path={`/profile/:email`}
+          element={
+            <Home>
+              <FriendsProfile />
+            </Home>
+          }
+        />
+        <Route
+          path={`/view-post/:id`}
+          element={
+            <Home>
+              <ViewPost />
+            </Home>
+          }
+        />
         <Route path="/signin" element={<SignIn />} />
       </Routes>
     </Router>

@@ -70,7 +70,14 @@ const Post = ({ item }) => {
         className="flex-col rounded-[10px] shadow-xl py-5 px-5 xl2:w-[60] xl:w-[50rem] lg2:w-[40rem] lg:w-[45rem] w-full md:w-[45rem] border-solid border-gray-300 border-[1px] "
       >
         <CardHeader
-          avatar={<Avatar src={user?.avatar} aria-label="recipe"></Avatar>}
+          avatar={
+            <Avatar
+              src={user?.avatar}
+              onClick={() => navigate(`profile/${user.email}`)}
+              aria-label="recipe"
+              className="cursor-pointer"
+            ></Avatar>
+          }
           action={
             <IconButton aria-label="settings">
               <List component="nav" aria-labelledby="nested-list-subheader">
@@ -99,7 +106,14 @@ const Post = ({ item }) => {
               {user?.name}
             </span>
           }
-          subheader={item.date}
+          subheader={
+            <span
+              className="cursor-pointer hover:underline"
+              onClick={() => navigate(`view-post/${item.id}`)}
+            >
+              {item.date}
+            </span>
+          }
         />
         <CardContent>
           <Typography variant="body2" color="text.secondary">

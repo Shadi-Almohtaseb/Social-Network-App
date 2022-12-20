@@ -47,8 +47,6 @@ const AddPosts = () => {
               size="small"
               placeholder="What's happening?"
               sx={{
-                backgroundColor: "#f1f1f1",
-                borderRadius: "10px",
                 "& .MuiInputLabel-root": { color: "green" }, //styles the label
                 "& .MuiOutlinedInput-root": {
                   "& > fieldset": { border: "none" },
@@ -99,7 +97,6 @@ const AddPosts = () => {
             sx={{ padding: " 8px 26px", borderRadius: 1 }}
           >
             Post
-            {/* <input hidden accept="image/*" multiple type="file" /> */}
           </Button>
         </CardActions>
       </Card>
