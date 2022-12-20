@@ -3,7 +3,7 @@ import React, { useState } from "react";
 import Sidebar from "../components/Sidebar";
 import Navbar from "../components/Navbar";
 
-const Home = ({isProfile,children}  ) => {
+const Home = ({ children }) => {
   const [openSide, setOpenSide] = useState(true);
   const [mode, setMode] = useState("light");
 
@@ -19,15 +19,15 @@ const Home = ({isProfile,children}  ) => {
         <Box bgcolor={"background.default"} color={"text.primary"}>
           <Navbar openSide={openSide} setOpenSide={setOpenSide} />
 
-            <Box className="flex" >
-              <Sidebar
-                mode={mode}
-                setMode={setMode}
-                openSide={openSide}
-                setOpenSide={setOpenSide}
-              />
-            </Box>
-              {children}
+          <Box className="flex">
+            <Sidebar
+              mode={mode}
+              setMode={setMode}
+              openSide={openSide}
+              setOpenSide={setOpenSide}
+            />
+          </Box>
+          {children}
         </Box>
       </ThemeProvider>
     </>

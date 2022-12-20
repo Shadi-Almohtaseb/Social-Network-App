@@ -7,22 +7,12 @@ import { grey } from "@mui/material/colors";
 import LeftBarProfile from "./LeftbarProfile";
 import { Box } from "@mui/system";
 import RightBarProfile from "./RightbarProfile";
-import { useSearchParams, useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 
 const FriendsProfile = () => {
-  // const email = '202834@ppu.edu.ps';
   const { email } = useParams();
-  console.log("email", email);
-  const [params, setParams] = useSearchParams();
-  const newParams = new URLSearchParams(params);
-  console.log(newParams);
   const { usersList } = UserAuth();
-
   const userProfile = usersList?.find((u) => u.email === email);
-  console.log(userProfile);
-  console.log("friendsProfile");
-
-  // const userProfile = usersList.find(u => u.email === userIn?.email)
 
   return (
     <Container className="lg2:ml-[12rem] lg2:w-[85%]">
