@@ -13,39 +13,39 @@ import {
 import { grey } from "@mui/material/colors";
 import RemoveRedEyeOutlinedIcon from "@mui/icons-material/RemoveRedEyeOutlined";
 import BackupOutlinedIcon from "@mui/icons-material/BackupOutlined";
-import { db, storage } from "../../../firebase.config";
-import { ref, update } from "firebase/database";
-import { uploadBytes, ref as sRef } from "firebase/storage";
-import { v4 } from "uuid";
+// import { db, storage } from "../../../firebase.config";
+// import { ref, update } from "firebase/database";
+// import { uploadBytes, ref as sRef } from "firebase/storage";
+// import { v4 } from "uuid";
 
 const InformationProfile = ({ user }) => {
-  const [imageAsFile, setImageAsFile] = useState("");
+  //const [imageAsFile, setImageAsFile] = useState("");
 
-  const HandelImageProfile = (e) => {
-    if (e.target.files[0]) {
-      const image = e.target.files[0];
-      setImageAsFile(() => image);
-    }
+  // const HandelImageProfile = (e) => {
+  //   if (e.target.files[0]) {
+  //     const image = e.target.files[0];
+  //     setImageAsFile(() => image);
+  //   }
 
-    const mountainImagesRef = sRef(
-      storage,
-      `profile/${imageAsFile.name + v4()}`
-    );
-    const url =
-      "https://firebasestorage.googleapis.com/v0/b/" +
-      mountainImagesRef.bucket +
-      "/o/profile%2F" +
-      mountainImagesRef.name +
-      "?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd";
+  //   const mountainImagesRef = sRef(
+  //     storage,
+  //     `profile/${imageAsFile.name + v4()}`
+  //   );
+  //   const url =
+  //     "https://firebasestorage.googleapis.com/v0/b/" +
+  //     mountainImagesRef.bucket +
+  //     "/o/profile%2F" +
+  //     mountainImagesRef.name +
+  //     "?alt=media&token=03058de8-fdd8-412d-9ecd-1a7ee0f2cfcd";
 
-    uploadBytes(mountainImagesRef, imageAsFile).then(() => {
-      console.log("imageProfile upload");
-    });
+  //   uploadBytes(mountainImagesRef, imageAsFile).then(() => {
+  //     console.log("imageProfile upload");
+  //   });
 
-    update(ref(db, "users/" + user.id), {
-      imageProfile: url,
-    });
-  };
+  //   update(ref(db, "users/" + user.id), {
+  //     imageProfile: url,
+  //   });
+  // };
 
   return (
     <Container>

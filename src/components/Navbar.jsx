@@ -9,7 +9,6 @@ import {
   Menu,
   MenuItem,
   styled,
-  alpha,
   Toolbar,
   Tooltip,
   Typography,
@@ -50,10 +49,13 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 
 const Navbar = ({ openSide, setOpenSide }) => {
   const { HandelSignOut, userIn } = UserAuth();
-  const [users, setUsers] = useState();
   const navigate = useNavigate();
   const { usersList } = UserAuth();
   const [open, setOpen] = useState(false);
+
+  useEffect(() => {
+    if (!userIn) navigate("/signin");
+  }, [userIn]);
 
   const handelSignOut = async () => {
     try {
@@ -64,18 +66,12 @@ const Navbar = ({ openSide, setOpenSide }) => {
     }
   };
 
-  const [inputUser, setInputUser] = useState("");
-
-  useEffect(() => {
-    if (!userIn) navigate("/signin");
-  }, [userIn]);
-
   const HandelSubmit = (e) => {
     e.preventDefault();
     const email = e.target.inputUser.value;
     // console.log(email)
     // navigate(`/profile?email=${email}`)
-    navigate(`/profile/${email}`)
+    navigate(`/profile/${email}`);
   };
 
   return (
