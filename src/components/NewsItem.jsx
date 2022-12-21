@@ -1,6 +1,5 @@
 import { Box, Typography } from "@mui/material";
 import React, { useState } from "react";
-import { Link } from "react-router-dom";
 
 const NewsItem = ({ newItem }) => {
   const [title, setTitle] = useState(newItem.title);

@@ -1,4 +1,3 @@
-import React, { useEffect, useState } from "react";
 import {
   Avatar,
   Card,
@@ -21,47 +20,12 @@ import PendingIcon from "@mui/icons-material/Pending";
 import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
-import { UserAuth } from "../../context/AuthContext";
-import { ExpandLess, ExpandMore, StarBorder } from "@mui/icons-material";
 import DeleteIcon from "@mui/icons-material/Delete";
-import { ref, remove, set, update } from "firebase/database";
-import { db } from "../../firebase.config";
-import { useNavigate } from "react-router-dom";
+import { UseActionsPost } from "../../hooks/UseActionsPost";
 
 const Post = ({ item }) => {
-  const [open, setOpen] = useState(false);
-  const [likes, setLike] = useState(item.countLike);
-  const [notLike, setNotLike] = useState(false);
-  const { usersList } = UserAuth();
-
-  const user = usersList?.find((u) => u?.email === item?.email);
-
-  const navigate = useNavigate();
-
-  useEffect(() => {
-    update(ref(db, "posts/" + item.id), {
-      countLike: likes,
-    });
-  }, [likes]);
-
-  const handleClick = () => {
-    setOpen(!open);
-  };
-
-  const HandelDelete = () => {
-    remove(ref(db, "posts/" + item.id));
-    setOpen(!open);
-  };
-
-  const HandelLike = () => {
-    if (notLike === false) {
-      setLike(likes + 1);
-      setNotLike(true);
-    } else {
-      setLike(likes - 1);
-      setNotLike(false);
-    }
-  };
+  const { HandelDelete, handleClick, HandelLike, navigate, user, likes, open } =
+    UseActionsPost(item);
 
   return (
     <div>

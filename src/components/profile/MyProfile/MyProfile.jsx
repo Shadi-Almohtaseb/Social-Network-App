@@ -1,7 +1,6 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container, Stack } from "@mui/material";
 import { UserAuth } from "../../../context/AuthContext";
-import { Navigate } from "react-router-dom";
 import InformationProfile from "./InformationProfile";
 import FeedProfile from "./FeedProfile";
 import { grey } from "@mui/material/colors";
@@ -10,13 +9,8 @@ import { Box } from "@mui/system";
 import RightBarProfile from "./RightbarProfile";
 
 const MyProfile = () => {
-  const { userIn } = UserAuth();
   const { usersList } = UserAuth();
-
-  useEffect(() => {
-    if (!userIn) Navigate("/signin");
-  }, [userIn]);
-
+  const { userIn } = UserAuth();
   const userProfile = usersList.find((u) => u.email === userIn?.email);
 
   return (
