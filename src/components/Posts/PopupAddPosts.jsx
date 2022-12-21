@@ -27,7 +27,6 @@ import { UserAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 const PopupAddPosts = (props) => {
-  //const { userIn } = UseIsUserExist();
   const { userIn } = UserAuth();
   const navigate = useNavigate();
 

@@ -7,15 +7,15 @@ import {
   ListItemText,
   Switch,
 } from "@mui/material";
-import React, { useState } from "react";
+import React from "react";
 import CottageIcon from "@mui/icons-material/Cottage";
-import AutoStoriesIcon from "@mui/icons-material/AutoStories";
 import GroupsIcon from "@mui/icons-material/Groups";
 import EmojiPeopleIcon from "@mui/icons-material/EmojiPeople";
 import SettingsIcon from "@mui/icons-material/Settings";
 import LocalGroceryStoreIcon from "@mui/icons-material/LocalGroceryStore";
 import AccountCircleIcon from "@mui/icons-material/AccountCircle";
 import NightsStayIcon from "@mui/icons-material/NightsStay";
+import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { Link } from "react-router-dom";
 
 const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
@@ -42,12 +42,27 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
             </ListItem>
           </Link>
           <ListItem disablePadding>
-            <ListItemButton LinkComponent="a" href="#">
-              <ListItemIcon>
-                <AutoStoriesIcon color="primary" />
-              </ListItemIcon>
-              <ListItemText primary="Pages" />
-            </ListItemButton>
+            <Link to="/saved-posts">
+              <ListItemButton LinkComponent="a" href="#">
+                <ListItemIcon>
+                  <BookmarkOutlinedIcon
+                    sx={{ width: "25px", height: "25px" }}
+                    color="primary"
+                  />
+                </ListItemIcon>
+                <ListItemText primary="Saved Posts" />
+              </ListItemButton>
+            </Link>
+          </ListItem>
+          <ListItem disablePadding>
+            <Link to="/profile" className="flex">
+              <ListItemButton LinkComponent="a" href="#">
+                <ListItemIcon>
+                  <AccountCircleIcon color="primary" />
+                </ListItemIcon>
+                <ListItemText primary="Profile" />
+              </ListItemButton>
+            </Link>
           </ListItem>
           <ListItem disablePadding>
             <ListItemButton LinkComponent="a" href="#">
@@ -80,16 +95,6 @@ const Sidebar = ({ mode, setMode, openSide, setOpenSide }) => {
               </ListItemIcon>
               <ListItemText primary="Settings" />
             </ListItemButton>
-          </ListItem>
-          <ListItem disablePadding>
-            <Link to="/profile" className="flex">
-              <ListItemButton LinkComponent="a" href="#">
-                <ListItemIcon>
-                  <AccountCircleIcon color="primary" />
-                </ListItemIcon>
-                <ListItemText primary="Profile" />
-              </ListItemButton>
-            </Link>
           </ListItem>
           <ListItem
             disablePadding
