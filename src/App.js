@@ -5,6 +5,8 @@ import Home from "./pages/Home";
 import PageHome from "./components/pagehome/HomePage";
 import FriendsProfile from "./components/profile/FriendsProfile/FriendsProfile";
 import ViewPost from "./components/viewSinglePost/ViewPost";
+import SavedPosts from "./components/savedPosts/SavedPost";
+import RenderPosts from "./components/savedPosts/RenderPosts";
 
 const App = () => {
   return (
@@ -39,6 +41,14 @@ const App = () => {
           element={
             <Home>
               <ViewPost />
+            </Home>
+          }
+        />
+        <Route
+          path="/saved-posts"
+          element={
+            <Home>
+              <RenderPosts />
             </Home>
           }
         />

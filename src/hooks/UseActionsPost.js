@@ -19,7 +19,6 @@ const UseActionsPost = (item) => {
       countLike: likes,
     });
   }, [likes]);
-
   const handleClick = () => {
     setOpen(!open);
   };

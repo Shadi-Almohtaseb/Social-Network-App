@@ -21,11 +21,39 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import ShareIcon from "@mui/icons-material/Share";
 import FavoriteIcon from "@mui/icons-material/Favorite";
 import DeleteIcon from "@mui/icons-material/Delete";
+import BookmarkBorderOutlinedIcon from "@mui/icons-material/BookmarkBorderOutlined";
+import BookmarkOutlinedIcon from "@mui/icons-material/BookmarkOutlined";
 import { UseActionsPost } from "../../hooks/UseActionsPost";
+import { useEffect, useState } from "react";
 
 const Post = ({ item }) => {
   const { HandelDelete, handleClick, HandelLike, navigate, user, likes, open } =
     UseActionsPost(item);
+
+  const [saved, setSaved] = useState(false);
+  const HandelSave = () => {
+    setSaved(!saved);
+    localStorage.setItem("savedPosts", item.id);
+    // else localStorage.removeItem("savedPosts", savedPosts);
+  };
+
+  //const initialState = [];
+  // const [savedPosts, setSavedPosts] = useState(initialState);
+
+  // useEffect(() => {
+  //   if (saved) {
+  //     setSavedPosts((current) => [
+  //       ...current,
+  //       { savedPosts: item.id },
+  //     ]);
+  //     //setEmployees(current => [...current, {id: 3, name: 'Carl'}]);
+  //     console.log(savedPosts);
+  //   } else {
+  //     // const postId = savedPosts.filter((id) => id !== item.id);
+  //     // console.log("postId:", postId);
+  //     // setSavedPosts(postId);
+  //   }
+  // }, [saved]);
 
   return (
     <div>
@@ -90,26 +118,40 @@ const Post = ({ item }) => {
           image={item.image}
           alt="Paella dish"
         />
-        <CardActions disableSpacing>
-          <Box className="border-solid border-2 border-indigo-300 rounded-full px-3 mr-3">
-            <IconButton aria-label="VideocamOutlinedIcon" onClick={HandelLike}>
-              <FormControlLabel
-                label="Like"
-                control={
-                  <Checkbox
-                    icon={<FavoriteBorderIcon />}
-                    checkedIcon={<FavoriteIcon sx={{ color: "#188cff" }} />}
-                  />
-                }
-              />
+        <CardActions className="flex items-center justify-between">
+          <Box className="flex items-center justify-center">
+            <Box className="border-solid border-2 border-indigo-300 rounded-full px-3 mr-3">
+              <IconButton
+                aria-label="VideocamOutlinedIcon"
+                onClick={HandelLike}
+              >
+                <FormControlLabel
+                  label="Like"
+                  control={
+                    <Checkbox
+                      icon={<FavoriteBorderIcon />}
+                      checkedIcon={<FavoriteIcon sx={{ color: "#188cff" }} />}
+                    />
+                  }
+                />
+              </IconButton>
+              {likes}
+            </Box>
+            <IconButton
+              aria-label="share"
+              className="border-solid border-2 border-indigo-300 rounded-full px-3"
+            >
+              <ShareIcon /> <span className="text-lg pl-3">0</span>
             </IconButton>
-            {likes}
           </Box>
-          <IconButton
-            aria-label="share"
-            className="border-solid border-2 border-indigo-300 rounded-full px-3"
-          >
-            <ShareIcon /> <span className="text-lg pl-3">0</span>
+          <IconButton aria-label="share" onClick={HandelSave}>
+            {!saved ? (
+              <BookmarkBorderOutlinedIcon
+                sx={{ width: "33px", height: "33px" }}
+              />
+            ) : (
+              <BookmarkOutlinedIcon sx={{ width: "33px", height: "33px" }} />
+            )}
           </IconButton>
         </CardActions>
       </Card>
