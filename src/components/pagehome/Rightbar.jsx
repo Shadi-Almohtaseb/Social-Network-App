@@ -3,7 +3,7 @@ import React from "react";
 import { useFetchData } from "../../hooks/UseFetchData";
 import NewsItem from "../NewsItem";
 
-const Rightbar = () => {
+const RightBar = () => {
   const fetchedData = useFetchData();
 
   return (
@@ -23,4 +23,4 @@ const Rightbar = () => {
   );
 };
 
-export default Rightbar;
+export default RightBar;
