@@ -33,27 +33,34 @@ const Post = ({ item }) => {
   const [saved, setSaved] = useState(false);
   const HandelSave = () => {
     setSaved(!saved);
-    localStorage.setItem("savedPosts", item.id);
+    
     // else localStorage.removeItem("savedPosts", savedPosts);
   };
 
-  //const initialState = [];
-  // const [savedPosts, setSavedPosts] = useState(initialState);
-
-  // useEffect(() => {
-  //   if (saved) {
-  //     setSavedPosts((current) => [
-  //       ...current,
-  //       { savedPosts: item.id },
-  //     ]);
-  //     //setEmployees(current => [...current, {id: 3, name: 'Carl'}]);
-  //     console.log(savedPosts);
-  //   } else {
-  //     // const postId = savedPosts.filter((id) => id !== item.id);
-  //     // console.log("postId:", postId);
-  //     // setSavedPosts(postId);
-  //   }
-  // }, [saved]);
+  const initialState = []; 
+  const [savedPosts, setSavedPosts] = useState([]);
+  useEffect(() => {
+    if (saved) {
+      const posts = localStorage.getItem("savedPosts");
+      if(posts )
+      {
+        const postsId = JSON.parse(posts)
+        postsId.push(item.id)
+        localStorage.setItem("savedPosts", JSON.stringify(postsId));
+      }
+      else
+      {
+        localStorage.setItem("savedPosts", JSON.stringify([item.id]));
+      }
+    } else {
+      const posts = localStorage.getItem("savedPosts");
+      if(posts)
+      {const postsId = JSON.parse(posts)
+        const newPostId = postsId.filter((id) => id !== item.id);
+        localStorage.setItem("savedPosts", JSON.stringify(newPostId));
+      }
+    }
+  }, [saved]);
 
   return (
     <div>

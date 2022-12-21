@@ -1,6 +1,6 @@
 import { Box, Container, Stack } from "@mui/material";
 import Feed from "./Feed";
-import RightBar from "./RightBar";
+import RightBar from "./Rightbar";
 
 const PageHome = () => {
   return (
