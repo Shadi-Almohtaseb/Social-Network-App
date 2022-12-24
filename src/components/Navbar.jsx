@@ -69,8 +69,6 @@ const Navbar = ({ openSide, setOpenSide }) => {
   const HandelSubmit = (e) => {
     e.preventDefault();
     const email = e.target.inputUser.value;
-    // console.log(email)
-    // navigate(`/profile?email=${email}`)
     navigate(`/profile/${email}`);
   };
 
@@ -174,7 +172,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
               sx: {
                 overflow: "visible",
                 filter: "drop-shadow(0px 2px 8px rgba(0,0,0,0.32))",
-                mt: -56,
+                mt: -66,
                 "& .MuiAvatar-root": {
                   width: 32,
                   height: 32,
