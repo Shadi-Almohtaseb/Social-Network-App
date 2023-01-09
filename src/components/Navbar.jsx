@@ -108,7 +108,7 @@ const Navbar = ({ openSide, setOpenSide }) => {
             type="submit"
             className="px-2 py-1 rounded-lg bg-blue-300 text-black hover:bg-blue-200"
           >
-            Check
+            Visit
           </button>
         </form>
         <Icons>

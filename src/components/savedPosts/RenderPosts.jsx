@@ -26,7 +26,6 @@ const RenderPosts = () => {
         "savedPosts",
         JSON.parse(localStorage.getItem("saved") || "[]")
       );
-      console.log("newSaved", newSaved);
       setNewSaved(JSON.parse(localStorage.getItem("saved") || "[]"));
     }
   }, [data]);
