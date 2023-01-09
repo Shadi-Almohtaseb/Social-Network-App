@@ -6,7 +6,7 @@ const useFetchData = () => {
   useEffect(() => {
     const fetchData = () => {
       fetch(
-        `https://newsapi.org/v2/everything?q=tesla&from=2022-11-24&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
+        `https://newsapi.org/v2/everything?q=tesla&from=2022-12-09&sortBy=publishedAt&apiKey=${process.env.REACT_APP_API_KEY}`
       )
         .then((res) => {
           res.json().then((data) => {
