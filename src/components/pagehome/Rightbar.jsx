@@ -1,6 +1,7 @@
 import { Box, Typography } from "@mui/material";
 import React from "react";
 import { useFetchData } from "../../hooks/UseFetchData";
+import { newDataAPI } from "../../Data";
 import NewsItem from "../NewsItem";
 
 const RightBar = () => {
@@ -16,7 +17,7 @@ const RightBar = () => {
       <Typography variant="h4" className="text-center mt-5 ">
         Latest News
       </Typography>
-      {fetchedData.map((newItem, index) => (
+      {newDataAPI.map((newItem, index) => (
         <NewsItem newItem={newItem} key={index} />
       ))}
     </Box>
