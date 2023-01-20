@@ -2,6 +2,16 @@
 
 You can see the project live here [Vist this Site](https://social-network-app-rho.vercel.app/).
 
+![image](src/assets/images/Screenshot%202023-01-20%20160015.png)
+
+![image](src/assets/images/Screenshot%202023-01-20%20160033.png)
+
+![image](src/assets/images/Screenshot%202023-01-20%20160101.png)
+
+![image](src/assets/images/Screenshot%202023-01-20%20160159.png)
+
+![image](src/assets/images/Screenshot%202023-01-20%20160236.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
