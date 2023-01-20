@@ -12,6 +12,10 @@ You can see the project live here [Vist this Site](https://social-network-app-rh
 
 ![image](src/assets/images/Screenshot%202023-01-20%20160236.png)
 
+![image](src/assets/images/ScreenshotResponseve2.png)
+
+![image](src/assets/images/ScreenshotResponseve1.png)
+
 ## Available Scripts
 
 In the project directory, you can run:
